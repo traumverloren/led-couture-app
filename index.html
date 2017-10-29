@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>LED Umbrella Couture App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var button = document.getElementById('button');
+  var socket = io();
+
+  function sendEvent() {
+    socket.emit('stateChanged', 'rainbow');
+  }
+
+  button.addEventListener('click', sendEvent);
+});
+</script>
+  </head>
+  <body>
+    <h1>Welcome!</h1>
+    <button type="button" id="button" name="button">🌈 Click Me 🌈</button>
+  </body>
+</html>
