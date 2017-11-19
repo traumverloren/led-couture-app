@@ -13,6 +13,7 @@ io.on('connection', socket => {
 
   socket.on('stateChanged', msg => {
     console.log('new program: ' + msg);
+    io.emit("updateState", msg);
   });
 
   socket.on('disconnect', () => {
@@ -22,6 +23,6 @@ io.on('connection', socket => {
   });
 });
 
-server.listen(3000, () => {
-  console.log('The server is running: http://localhost:3000');
+server.listen(80, () => {
+  console.log('The server is running');
 });
