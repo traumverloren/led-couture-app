@@ -1,7 +1,7 @@
 const app = require("express")();
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 8080;
 
 console.log("STARTING SERVER 🌈 🦄 ✨");
 
@@ -25,5 +25,5 @@ io.on("connection", socket => {
 });
 
 server.listen(port, () => {
-  console.log("The server is running");
+  console.log("Express app listening on port:", port);
 });
