@@ -14,7 +14,7 @@ h4,
 h5,
 h6 {
   font-family: 'Press Start 2P', cursive;
-  color: #7f8c8d;
+  color: #000000;
   letter-spacing: 1px;
 }
 
@@ -25,6 +25,11 @@ h1 {
 
 p {
   font-family: 'Press Start 2P', cursive;
+}
+
+img {
+  width: 30%;
+  margin: 0 auto;
 }
 
 $colors: #9400d3, #0000ff, #00ff00, #ffff00, #ff7f00, #ff0000;
