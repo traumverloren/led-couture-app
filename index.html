@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>LED Umbrella Couture App</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var button = document.getElementById('button');
-  var socket = io();
+<head>
+  <meta charset="utf-8">
+  <title>LED Umbrella Couture App</title>
+  <link rel="icon" href="public/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="public/index.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=PT+Sans|VT323');
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
 
-  function sendEvent() {
-    socket.emit('stateChanged', 'rainbow');
-  }
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var rainbowButton = document.getElementById('rainbowButton');
+      var socket = io();
 
-  button.addEventListener('click', sendEvent);
-});
-</script>
-  </head>
-  <body>
-    <h1>Welcome!</h1>
-    <button type="button" id="button" name="button">🌈 Click Me 🌈</button>
-  </body>
+      function sendEvent() {
+        socket.emit('rainbow');
+      }
+
+      rainbowButton.addEventListener('click', sendEvent);
+    });
+  </script>
+</head>
+
+<body>
+  <h1 class="rainbow">LED Umbrella</h1>
+  <button type="button" id="rainbowButton" name="rainbowButton">🌈 Click Me 🌈</button>
+</body>
+
 </html>
