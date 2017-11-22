@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Pacifico|Press+Start+2P|Nosifer');
+@import url("https://fonts.googleapis.com/css?family=Pacifico|Press+Start+2P|Nosifer");
 
 $colors: #9400d3, #0000ff, #00ff00, #ffff00, #ff7f00, #ff0000;
-$pacifico: 'Pacifico', cursive;
-$press-start: 'Press Start 2P', cursive;
-$nosifer: 'Nosifer', cursive;
+$pacifico: "Pacifico", cursive;
+$press-start: "Press Start 2P", cursive;
+$nosifer: "Nosifer", cursive;
 
 /* Rainbow animation to use? */
 $size: 10;
@@ -48,11 +48,17 @@ h6 {
 }
 
 p {
+  text-align: center;
   margin: 0;
-  line-height: 18px;
+}
+
+.instructions {
+  margin: 0;
+  padding: 20px 0;
   font-size: 12px;
   font-family: $press-start;
   text-align: center;
+  line-height: 16px;
 
   @media (min-width: 420px) {
     font-size: 14px;
@@ -75,13 +81,9 @@ p {
   }
 }
 
-.instructions {
-  padding: 20px 0;
-}
-
 a {
   text-decoration: none;
-  cursor: url('nyan_cat.cur'), pointer;
+  cursor: url("nyan_cat.cur"), pointer;
   color: black;
 
   &:visited {
@@ -142,7 +144,7 @@ a {
   margin: 10px auto;
 
   @media (min-width: 769px) {
-    margin: 20px auto;
+    margin: 30px auto;
   }
 }
 
@@ -150,22 +152,21 @@ button {
   display: block;
   font-size: 28px;
   text-decoration: none;
-  line-height: 18px;
   font-weight: 300;
   background: none;
-  margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
+  margin: 10px auto;
   border: none;
+  line-height: 36px;
 
   @media (min-width: 420px) {
     font-size: 36px;
+    line-height: 48px;
   }
 
   @media (min-width: 769px) {
     font-size: 48px;
-    + button {
-      margin-top: 30px;
-    }
+    line-height: 66px;
   }
 }
 
@@ -265,7 +266,7 @@ footer {
 //   color: #eee;
 // }
 #rainbowButton {
-  cursor: url('rainbow.png') 32 32, pointer;
+  cursor: url("rainbow.png") 32 32, pointer;
 }
 
 #rainbow {
@@ -277,5 +278,18 @@ footer {
 #rainButton {
   font-family: $nosifer;
   color: #0000ff;
-  cursor: url('raincloud.gif') 32 32, pointer;
+  cursor: url("raincloud.gif") 32 32, pointer;
+  font-size: 32px;
+  line-height: 40px;
+  padding: 0px;
+
+  @media (min-width: 420px) {
+    font-size: 40px;
+    line-height: 45px;
+  }
+
+  @media (min-width: 769px) {
+    font-size: 56px;
+    line-height: 72px;
+  }
 }
