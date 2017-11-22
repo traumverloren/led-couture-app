@@ -1,8 +1,32 @@
-@import url('https://fonts.googleapis.com/css?family=Pacifico|Press+Start+2P');
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Press+Start+2P|Nosifer');
 
 $colors: #9400d3, #0000ff, #00ff00, #ffff00, #ff7f00, #ff0000;
 $pacifico: 'Pacifico', cursive;
 $press-start: 'Press Start 2P', cursive;
+$nosifer: 'Nosifer', cursive;
+
+/* Rainbow animation to use? */
+$size: 10;
+
+@mixin rainbow-shadow($colors, $offset: 0, $size: $size) {
+  $len: length($colors);
+  $outp: 0px 0px transparent;
+  @for $i from 1 through $size {
+    $ind: floor(max($i + $offset, 1) / $size * length($colors)) % $len + 1;
+    $col: nth($colors, $ind);
+    $outp: #{$outp}, #{$i}px #{$i}px #{$col};
+  }
+
+  text-shadow: $outp;
+}
+
+@keyframes animated-rainbow-shadow {
+  @for $i from 0 to $size + 1 {
+    #{$i / $size * 100}% {
+      @include rainbow-shadow($colors, $i);
+    }
+  }
+}
 
 body {
   min-height: 100vh;
@@ -20,28 +44,45 @@ h6 {
   font-family: $pacifico;
   color: #000000;
   letter-spacing: 1px;
-}
-
-h1 {
-  font-size: 60px;
   text-align: center;
+  margin: 0;
 }
 
 p {
-  font-size: 16px;
+  margin: 0;
+  line-height: 18px;
+  font-size: 12px;
   font-family: $press-start;
   text-align: center;
+
+  @media (min-width: 420px) {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  @media (min-width: 769px) {
+    font-size: 18px;
+    line-height: 24px;
+  }
 }
 
-img {
-  width: 30%;
-  display: block;
-  margin: 0 auto;
+.umbrella {
+  padding: 10px 0 10px;
+
+  img {
+    width: 40%;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.instructions {
+  padding: 20px 0;
 }
 
 a {
   text-decoration: none;
-  cursor: pointer;
+  cursor: url('nyan_cat.cur'), pointer;
   color: black;
 
   &:visited {
@@ -57,12 +98,28 @@ a {
   }
 }
 
-h1 {
+.heading {
+  padding: 10px;
   letter-spacing: 2px;
   position: relative;
   text-align: center;
-  margin: 20px;
-  transform: translateX(-100px);
+  margin: 0;
+  transform: translateX(-60px);
+  font-size: 28px;
+
+  @media (min-width: 420px) {
+    font-size: 36px;
+    transform: translateX(-80px);
+  }
+
+  @media (min-width: 769px) {
+    font-size: 60px;
+    transform: translateX(-120px);
+  }
+
+  @media (min-width: 1440px) {
+    transform: translateX(-140px);
+  }
 }
 
 .wrapper {
@@ -72,13 +129,56 @@ h1 {
 }
 
 .content {
+  margin: 0 auto;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.line {
+  width: 60%;
+  min-height: 2px;
+  border-bottom: 2px dashed #000000;
+  height: 2px;
+  margin: 10px auto;
+
+  @media (min-width: 769px) {
+    margin: 20px auto;
+  }
+}
+
+button {
+  display: block;
+  font-size: 28px;
+  text-decoration: none;
+  line-height: 18px;
+  font-weight: 300;
+  background: none;
+  margin: 0 auto;
+  padding: 20px;
+  border: none;
+
+  @media (min-width: 420px) {
+    font-size: 36px;
+  }
+
+  @media (min-width: 769px) {
+    font-size: 48px;
+    + button {
+      margin-top: 20px;
+    }
+  }
 }
 
 /*Vertical Sliding*/
 .slidingVertical {
   display: inline;
-  text-indent: 10px;
+  text-indent: 8px;
+
+  @media (min-width: 769px) {
+    text-indent: 12px;
+  }
 }
 .slidingVertical span {
   animation: topToBottom 12.5s linear infinite 0s;
@@ -138,25 +238,22 @@ footer {
 
   p {
     font-family: $pacifico;
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: 1px;
     margin: 0;
   }
-}
 
-/* Rainbow animation to use? */
-$size: 50;
-
-@mixin rainbow-shadow($colors, $offset: 0, $size: $size) {
-  $len: length($colors);
-  $outp: 0px 0px transparent;
-  @for $i from 1 through $size {
-    $ind: floor(max($i + $offset, 1) / $size * length($colors)) % $len + 1;
-    $col: nth($colors, $ind);
-    $outp: #{$outp}, #{$i}px #{$i}px #{$col};
+  @media (min-width: 420px) {
+    p {
+      font-size: 18px;
+    }
   }
 
-  text-shadow: $outp;
+  @media (min-width: 769px) {
+    p {
+      font-size: 20px;
+    }
+  }
 }
 
 // h1 {
@@ -169,19 +266,18 @@ $size: 50;
 //   font-size: 60vh;
 //   color: #eee;
 // }
-
-button {
-  display: block;
-  margin: 0 auto;
+#rainbowButton {
+  cursor: url('rainbow.png') 32 32, pointer;
 }
-.rainbow {
+
+#rainbow {
+  font-family: $press-start;
+  color: turquoise;
   animation: animated-rainbow-shadow 1s infinite;
 }
 
-// @keyframes animated-rainbow-shadow {
-//   @for $i from 0 to $size + 1 {
-//     #{$i / $size * 100}% {
-//       @include rainbow-shadow($colors, $i);
-//     }
-//   }
-// }
+#rainButton {
+  font-family: $nosifer;
+  color: #0000ff;
+  cursor: url('raincloud.gif') 32 32, pointer;
+}

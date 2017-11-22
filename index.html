@@ -29,7 +29,7 @@
 
 <body class="wrapper">
   <main class="content">
-    <h1>Light My
+    <h1 class="heading">Light My
       <div class="slidingVertical">
         <span>Umbrella</span>
         <span>Skirt</span>
@@ -38,11 +38,22 @@
         <span>Stuff</span>
       </div>
     </h1>
-
-    <img src="public/animated-pixel-umbrella.gif" alt="pixelated rainbow umbrella">
-    <br/>
-    <p>Coming Soon...</p>
-
+    <div class="umbrella">
+      <img src="public/animated-pixel-umbrella.gif" alt="pixelated rainbow umbrella">
+    </div>
+    <div class="instructions">
+      <p>Click on a program below</p>
+      <p>& it will light my clothing!</p>
+      <div class="line" />
+    </div>
+    <section class="menu">
+      <button type="button" id="rainbowButton" name="rainbowButton">
+        <span id="rainbow">RAINBOWS</span>
+      </button>
+      <button type="button" id="rainButton" name="rainButton">
+        <span id="rain">RAIN</span>
+      </button>
+    </section>
   </main>
   <footer>
     <p>Made & Worn with 💖 by
