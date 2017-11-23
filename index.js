@@ -30,8 +30,7 @@ io.on('connection', socket => {
   console.log('CLIENT CONNECTED 💃 ', socket.id);
 
   socket.on('stateChanged', msg => {
-    console.log('new program: ' + msg);
-    io.emit('updateState', msg);
+    io.emit(msg.program, msg.colors);
   });
 
   socket.on('disconnect', () => {

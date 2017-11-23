@@ -16,13 +16,15 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var rainbowButton = document.getElementById('rainbowButton');
+      var rainButton = document.getElementById('rainButton');
       var socket = io();
 
-      function sendEvent() {
-        socket.emit('rainbow');
+      function sendEvent(program, colors = "") {
+        socket.emit("stateChanged", { program, colors });
       }
 
-      rainbowButton.addEventListener('click', sendEvent);
+      rainbowButton.addEventListener('click', () => sendEvent('rainbow', '255 0 0'));
+      rainButton.addEventListener('click', () => sendEvent('rain'));
     });
   </script>
 </head>
