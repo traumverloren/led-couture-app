@@ -25,6 +25,7 @@
 
       rainbowButton.addEventListener('click', () => sendEvent('rainbow', '255 0 0'));
       rainButton.addEventListener('click', () => sendEvent('rain'));
+      rainbowRainButton.addEventListener('click', () => sendEvent('rainbowRain'));
     });
   </script>
 </head>
@@ -54,6 +55,9 @@
       </button>
       <button type="button" id="rainButton" name="rainButton">
         <span id="rain">RAIN</span>
+      </button>
+      <button type="button" id="rainbowRainButton" name="rainbowRainButton">
+        <span id="rainbowRain">RAINBOW RAIN</span>
       </button>
     </section>
   </main>
