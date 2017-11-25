@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Pacifico|Press+Start+2P|Nosifer");
+@import url("https://fonts.googleapis.com/css?family=Codystar|Pacifico|Press+Start+2P|Nosifer");
 
 $colors: #9400d3, #0000ff, #00ff00, #ffff00, #ff7f00, #ff0000;
 $pacifico: "Pacifico", cursive;
 $press-start: "Press Start 2P", cursive;
 $nosifer: "Nosifer", cursive;
+$codystar: "Codystar", cursive;
 
 /* Rainbow animation to use? */
 $size: 10;
@@ -274,6 +275,10 @@ footer {
   font-family: $press-start;
   color: turquoise;
   animation: animated-rainbow-shadow 1s infinite;
+
+  &:hover {
+    color: darkturquoise;
+  }
 }
 
 #rainbowRainButton {
@@ -290,6 +295,10 @@ footer {
     0 16px 0 #da38b5, 0 17px 0 #da38b5, 0 18px 0 #da38b5;
   /* Pride Rainbow Text CSS found at TypographyCSS.com
   - by kevinhauger.com */
+
+  &:hover {
+    color: rgb(103, 10, 131);
+  }
 
   @media (min-width: 420px) {
     font-size: 36px;
@@ -309,6 +318,36 @@ footer {
   font-size: 32px;
   line-height: 40px;
   padding: 0px;
+
+  &:hover {
+    color: royalblue;
+  }
+
+  @media (min-width: 420px) {
+    font-size: 40px;
+    line-height: 45px;
+  }
+
+  @media (min-width: 769px) {
+    font-size: 56px;
+    line-height: 72px;
+  }
+}
+
+#sparkleButton {
+  font-family: $codystar;
+  color: goldenrod;
+  text-shadow: 0 0 10px gold;
+  cursor: url("sparkle.png") 32 32, pointer;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  padding: 0px;
+
+  &:hover {
+    color: gold;
+    text-shadow: 0 0 20px yellow;
+  }
 
   @media (min-width: 420px) {
     font-size: 40px;
