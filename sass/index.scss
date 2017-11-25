@@ -279,9 +279,9 @@ footer {
 #rainbowRainButton {
   font-family: $nosifer;
   cursor: url("rainbowraincloud.png") 32 32, pointer;
-  font-size: 32px;
+  font-size: 26px;
   line-height: 40px;
-  padding: 0px;
+  padding: 0 0 15px;
   color: darkblue;
   text-shadow: 0 1px 0 #fb4236, 0 2px 0 #fb4236, 0 3px 0 #fb4236,
     0 4px 0 #ff6b01, 0 5px 0 #ff6b01, 0 6px 0 #ff6b01, 0 7px 0 #fdc741,
@@ -292,13 +292,13 @@ footer {
   - by kevinhauger.com */
 
   @media (min-width: 420px) {
-    font-size: 40px;
-    line-height: 45px;
+    font-size: 36px;
+    line-height: 42px;
   }
 
   @media (min-width: 769px) {
-    font-size: 56px;
-    line-height: 72px;
+    font-size: 50px;
+    line-height: 68px;
   }
 }
 
