@@ -18,6 +18,10 @@
     document.addEventListener('DOMContentLoaded', function () {
       var rainbowButton = document.getElementById('rainbowButton');
       var rainButton = document.getElementById('rainButton');
+      var rainbowRainButton = document.getElementById('rainbowRainButton');
+      var sparkleButton = document.getElementById('sparkleButton');
+      var snakeButton = document.getElementById('snakeButton');
+
       var socket = io();
 
       function sendEvent(program, colors = "") {
@@ -28,6 +32,7 @@
       rainButton.addEventListener('click', () => sendEvent('rain'));
       rainbowRainButton.addEventListener('click', () => sendEvent('rainbowRain'));
       sparkleButton.addEventListener('click', () => sendEvent('sparkle'));
+      snakeButton.addEventListener('click', () => sendEvent('snake'));
     });
   </script>
 </head>
@@ -54,6 +59,9 @@
     <section class="menu">
       <button type="button" id="rainbowButton" name="rainbowButton">
         <span id="rainbow">RAINBOWS</span>
+      </button>
+      <button type="button" id="snakeButton" name="snakeButton">
+        <span id="snake">Snake</span>
       </button>
       <button type="button" id="rainButton" name="rainButton">
         <span id="rain">RAIN</span>

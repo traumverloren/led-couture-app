@@ -1,10 +1,11 @@
-@import url("https://fonts.googleapis.com/css?family=Codystar|Pacifico|Press+Start+2P|Nosifer");
+@import url("https://fonts.googleapis.com/css?family=Codystar|Monoton|Pacifico|Press+Start+2P|Nosifer");
 
 $colors: #9400d3, #0000ff, #00ff00, #ffff00, #ff7f00, #ff0000;
 $pacifico: "Pacifico", cursive;
 $press-start: "Press Start 2P", cursive;
 $nosifer: "Nosifer", cursive;
 $codystar: "Codystar", cursive;
+$monoton: "Monoton", cursive;
 
 /* Rainbow animation to use? */
 $size: 10;
@@ -155,10 +156,13 @@ button {
   text-decoration: none;
   font-weight: 300;
   background: none;
-  padding: 10px;
-  margin: 10px auto;
+  margin: 15px auto;
   border: none;
   line-height: 36px;
+
+  + button {
+    padding: 15px;
+  }
 
   @media (min-width: 420px) {
     font-size: 36px;
@@ -257,16 +261,6 @@ footer {
   }
 }
 
-// h1 {
-//   position: absolute;
-//   left: 50%;
-//   top: 50%;
-//   transform: translate(-50%, -50%);
-//   margin: -#{$size/2}px 0 0;
-//   font-family: 'Pacifico', cursive;
-//   font-size: 60vh;
-//   color: #eee;
-// }
 #rainbowButton {
   cursor: url("rainbow.png") 32 32, pointer;
 }
@@ -347,6 +341,30 @@ footer {
   &:hover {
     color: gold;
     text-shadow: 0 0 20px yellow;
+  }
+
+  @media (min-width: 420px) {
+    font-size: 40px;
+    line-height: 45px;
+  }
+
+  @media (min-width: 769px) {
+    font-size: 56px;
+    line-height: 72px;
+  }
+}
+
+#snakeButton {
+  font-family: $monoton;
+  color: #019119;
+  cursor: url("snake.png") 32 32, pointer;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  padding: 0px;
+
+  &:hover {
+    text-shadow: 0 10px 0 red;
   }
 
   @media (min-width: 420px) {
