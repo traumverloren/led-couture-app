@@ -9,9 +9,6 @@
   <link rel="icon" type="image/png" href="public/favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="public/favicon-16x16.png" sizes="16x16" />
   <link rel="stylesheet" type="text/css" href="public/index.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css?family=PT+Sans|VT323');
-  </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
 
   <script>
@@ -28,7 +25,7 @@
         socket.emit("stateChanged", { program, colors });
       }
 
-      rainbowButton.addEventListener('click', () => sendEvent('rainbow', '255 0 0'));
+      rainbowButton.addEventListener('click', () => sendEvent('rainbow'));
       rainButton.addEventListener('click', () => sendEvent('rain'));
       rainbowRainButton.addEventListener('click', () => sendEvent('rainbowRain'));
       sparkleButton.addEventListener('click', () => sendEvent('sparkle'));
