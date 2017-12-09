@@ -178,7 +178,7 @@ button {
 /*Vertical Sliding*/
 .slidingVertical {
   display: inline;
-  text-indent: 5px;
+  text-indent: 10px;
 
   @media (min-width: 769px) {
     text-indent: 12px;
@@ -186,10 +186,13 @@ button {
 }
 .slidingVertical span {
   animation: topToBottom 12.5s linear infinite 0s;
-  color: nth($colors, 1);
   opacity: 0;
   position: absolute;
   padding-right: 5px;
+}
+.slidingVertical span:nth-child(1) {
+  color: nth($colors, 1);
+  animation-delay: 0s;
 }
 .slidingVertical span:nth-child(2) {
   color: nth($colors, 2);
@@ -291,7 +294,7 @@ footer {
   - by kevinhauger.com */
 
   &:hover {
-    color: rgb(103, 10, 131);
+    color: rgb(173, 9, 9);
   }
 
   @media (min-width: 420px) {
@@ -314,7 +317,7 @@ footer {
   padding: 0px;
 
   &:hover {
-    color: royalblue;
+    color: rgb(24, 21, 185);
   }
 
   @media (min-width: 420px) {
@@ -330,7 +333,7 @@ footer {
 
 #sparkleButton {
   font-family: $codystar;
-  color: goldenrod;
+  color: rgb(214, 154, 24);
   text-shadow: 0 0 10px gold;
   cursor: url("sparkle.png") 32 32, pointer;
   font-size: 32px;
@@ -339,8 +342,8 @@ footer {
   padding: 0px;
 
   &:hover {
-    color: gold;
-    text-shadow: 0 0 20px yellow;
+    color: rgb(214, 154, 24);
+    text-shadow: 0 0 20px gold;
   }
 
   @media (min-width: 420px) {
@@ -364,7 +367,7 @@ footer {
   padding: 0px;
 
   &:hover {
-    text-shadow: 0 10px 0 red;
+    text-shadow: 0 5px 0 red;
   }
 
   @media (min-width: 420px) {
