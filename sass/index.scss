@@ -185,7 +185,7 @@ button {
   }
 }
 .slidingVertical span {
-  animation: topToBottom 12.5s linear infinite 0s;
+  animation: 12.5s infinite linear topToBottom;
   opacity: 0;
   position: absolute;
   padding-right: 5px;
