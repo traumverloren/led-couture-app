@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Codystar|Monoton|Pacifico|Press+Start+2P|Nosifer");
+@import url("https://fonts.googleapis.com/css?family=Bungee+Inline|Monoton|Pacifico|Press+Start+2P|Nosifer");
 
 $colors: #9400d3, #0000ff, #00ff00, #ffff00, #ff7f00, #ff0000;
 $pacifico: "Pacifico", cursive;
 $press-start: "Press Start 2P", cursive;
 $nosifer: "Nosifer", cursive;
-$codystar: "Codystar", cursive;
+$bungee: "Bungee Inline", cursive;
 $monoton: "Monoton", cursive;
 
 /* Rainbow animation to use? */
@@ -185,29 +185,38 @@ button {
   }
 }
 .slidingVertical span {
-  animation: 12.5s infinite linear topToBottom;
   opacity: 0;
   position: absolute;
   padding-right: 5px;
-}
-.slidingVertical span:nth-child(1) {
+  overflow: hidden;
   color: nth($colors, 1);
-  animation-delay: 0s;
+  -webkit-animation: topToBottom 12.5s linear infinite 0s;
+  -ms-animation: topToBottom 12.5s linear infinite 0s;
+  animation: topToBottom 12.5s linear infinite 0s;
 }
+
 .slidingVertical span:nth-child(2) {
   color: nth($colors, 2);
+  -webkit-animation-delay: 2.5s;
+  -ms-animation-delay: 2.5s;
   animation-delay: 2.5s;
 }
 .slidingVertical span:nth-child(3) {
   color: nth($colors, 3);
+  -webkit-animation-delay: 5s;
+  -ms-animation-delay: 5s;
   animation-delay: 5s;
 }
 .slidingVertical span:nth-child(4) {
   color: nth($colors, 5);
+  -webkit-animation-delay: 7.5s;
+  -ms-animation-delay: 7.5s;
   animation-delay: 7.5s;
 }
 .slidingVertical span:nth-child(5) {
   color: nth($colors, 6);
+  -webkit-animation-delay: 10s;
+  -ms-animation-delay: 10s;
   animation-delay: 10s;
 }
 
@@ -332,7 +341,7 @@ footer {
 }
 
 #sparkleButton {
-  font-family: $codystar;
+  font-family: $bungee;
   color: rgb(214, 154, 24);
   text-shadow: 0 0 10px gold;
   cursor: url("sparkle.png") 32 32, pointer;
