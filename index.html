@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="public/favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="public/favicon-16x16.png" sizes="16x16" />
   <link rel="stylesheet" type="text/css" href="public/index.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+  <script src="https://unpkg.com/mqtt@2.15.0/dist/mqtt.min.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -19,11 +19,33 @@
       var sparkleButton = document.getElementById('sparkleButton');
       var snakeButton = document.getElementById('snakeButton');
 
-      var socket = io();
+      // var socket = io();
+      var client = mqtt.connect('wss://led-umbrella.herokuapp.com') // you add a ws:// url here
 
-      function sendEvent(program, colors = "") {
-        socket.emit("stateChanged", { program, colors });
+      function sendEvent(program) {
+        client.publish('lights', program)
       }
+
+      client.on('connect', function () {
+        client.subscribe('lights')
+        client.publish('lights', 'Hello mqtt')
+        client.on('message', function (topic, message) {
+          // message is Buffer
+          console.log(topic, message.toString())
+        })
+
+        client.on("error", function (error) {
+          console.log("ERROR: ", error);
+        });
+
+        client.on('offline', function () {
+          console.log("offline");
+        });
+
+        client.on('reconnect', function () {
+          console.log("reconnect");
+        });
+      })
 
       rainbowButton.addEventListener('click', () => sendEvent('rainbow'));
       rainButton.addEventListener('click', () => sendEvent('rain'));
