@@ -19,8 +19,9 @@
       var sparkleButton = document.getElementById('sparkleButton');
       var snakeButton = document.getElementById('snakeButton');
 
-      // var socket = io();
-      var client = mqtt.connect('wss://led-umbrella.herokuapp.com') // you add a ws:// url here
+      var client = mqtt.connect(`wss://${process.env.KEY}:${process.env.TOKEN}@broker.shiftr.io`, {
+        clientId: 'javascript'
+      })
 
       function sendEvent(program) {
         client.publish('lights', program)
