@@ -1,8 +1,7 @@
 {
   "name": "umbrella-couture-app",
   "version": "1.0.0",
-  "description":
-    "client + server for controlling leds in umbrella and umbrella skirt",
+  "description": "client + server for controlling leds in umbrella and umbrella skirt",
   "main": "index.js",
   "scripts": {
     "start": "node index"
@@ -10,6 +9,7 @@
   "author": "Stephanie Nemeth",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "node-sass": "^4.7.2",
     "node-sass-middleware": "^0.11.0"

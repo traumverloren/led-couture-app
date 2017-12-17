@@ -4,6 +4,7 @@ const path = require("path");
 const server = require("http").Server(app);
 const sassMiddleware = require("node-sass-middleware");
 let port = process.env.PORT || 8080;
+require("dotenv").config();
 
 console.log("STARTING SERVER 🌈 🦄 ✨");
 
