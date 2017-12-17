@@ -19,7 +19,7 @@
       var sparkleButton = document.getElementById('sparkleButton');
       var snakeButton = document.getElementById('snakeButton');
 
-      var client = mqtt.connect(`wss://${process.env.KEY}:${process.env.TOKEN}@broker.shiftr.io`, {
+      var client = mqtt.connect('wss://69f0a4d5:3a44496732c3732f@broker.shiftr.io', {
         clientId: 'javascript'
       })
 
@@ -28,12 +28,7 @@
       }
 
       client.on('connect', function () {
-        client.subscribe('lights')
         client.publish('lights', 'Hello mqtt')
-        client.on('message', function (topic, message) {
-          // message is Buffer
-          console.log(topic, message.toString())
-        })
 
         client.on("error", function (error) {
           console.log("ERROR: ", error);
@@ -41,6 +36,10 @@
 
         client.on('offline', function () {
           console.log("offline");
+        });
+
+        client.on('disconnect', function () {
+          console.log("disconnect");
         });
 
         client.on('reconnect', function () {
