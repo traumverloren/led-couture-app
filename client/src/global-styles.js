@@ -1,30 +1,7 @@
 import { injectGlobal } from "styled-components";
 
 injectGlobal`
-	@font-face {
-	  font-family: 'Pacifico';
-	  src: url("../assets/fonts/Pacifico-Regular.ttf") format('ttf');
-  }
-
-	@font-face {
-	  font-family: 'Bungee Inline';
-	  src: url("../assets/fonts/BungeeInline-Regular.ttf") format('ttf');
-  }
-  
-	@font-face {
-	  font-family: 'Monoton';
-	  src: url("../assets/fonts/Monoton-Regular.ttf") format('ttf');
-  }
-  
-	@font-face {
-	  font-family: 'Press Start 2P';
-	  src: url("../assets/fonts/PressStart2P-Regular.ttf") format('ttf');
-  }
-
-  @font-face {
-	  font-family: 'Nosifier';
-	  src: url("../assets/fonts/Nosifier-Regular.ttf") format('ttf');
-  }
+  @import url("https://fonts.googleapis.com/css?family=Bungee+Inline|Monoton|Pacifico|Press+Start+2P|Nosifer");
 
   body {
     font-family: 'Pacifico';
