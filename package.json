@@ -5,14 +5,13 @@
     "client + server for controlling leds in umbrella and umbrella skirt",
   "main": "index.js",
   "scripts": {
-    "install": "cd client && npm install && npm run build && cd .."
+    "start": "node index",
+    "install": "cd client && npm install --only=dev && npm install && npm run build && cd .."
   },
   "author": "Stephanie Nemeth",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^4.0.0",
-    "express": "^4.16.2",
-    "node-sass": "^4.7.2",
-    "node-sass-middleware": "^0.11.0"
+    "express": "^4.16.2"
   }
 }

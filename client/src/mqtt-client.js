@@ -5,7 +5,7 @@ const client = mqtt.connect(
     process.env.REACT_APP_TOKEN
   }@broker.shiftr.io`,
   {
-    clientId: "javascript222222"
+    clientId: "javascript"
   }
 );
 
