@@ -25,6 +25,72 @@ const Main = styled.main`
   justify-content: space-between;
 `;
 
+const topToBottom = keyframes`
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  30% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+`;
+
+const SlidingVertical = styled.div`
+  display: inline;
+  text-indent: 10px;
+
+  @media (min-width: 769px) {
+    text-indent: 12px;
+  }
+
+  span {
+    opacity: 0;
+    position: absolute;
+    padding-right: 5px;
+    overflow: hidden;
+    color: ${COLORS[0]};
+    animation: ${topToBottom} 12.5s linear infinite 0s;
+  }
+
+  span:nth-child(2) {
+    color: ${COLORS[1]};
+    animation-delay: 2.5s;
+  }
+
+  span:nth-child(3) {
+    color: ${COLORS[2]};
+    animation-delay: 5s;
+  }
+
+  span:nth-child(4) {
+    color: ${COLORS[4]};
+    animation-delay: 7.5s;
+  }
+
+  span:nth-child(5) {
+    color: ${COLORS[5]};
+    animation-delay: 10s;
+  }
+`;
+
 const Heading = styled.h1`
   padding: 10px;
   position: relative;
@@ -365,7 +431,16 @@ class App extends Component {
     return (
       <Container>
         <Main>
-          <Heading>Light My</Heading>
+          <Heading>
+            Light My
+            <SlidingVertical>
+              <span>Clothes</span>
+              <span>Skirt</span>
+              <span>Necklace</span>
+              <span>Stuff</span>
+              <span>Umbrella</span>
+            </SlidingVertical>
+          </Heading>
           <ImageContainer>
             <Image src={umbrella} />
           </ImageContainer>
