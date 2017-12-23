@@ -113,6 +113,52 @@ const rainbowAnimation = keyframes`
 	100%{color: ${COLORS[5]};}
 `;
 
+const neonRainbowHover = keyframes`
+  from {
+    text-shadow:  0 0 0 ${COLORS[0]},
+                  0 3px 0 ${COLORS[1]},
+                  0 6px 0 ${COLORS[1]},
+                  0 9px 0 ${COLORS[2]},
+                  0 12px 0 ${COLORS[3]},
+                  0 15px 0 ${COLORS[4]},
+                  0 18px 0 ${COLORS[4]},
+                  0 21px 0 ${COLORS[5]};
+  }
+  to {
+    text-shadow:  -3px 3px 0 ${COLORS[5]},
+                  -6px 6px 0 ${COLORS[4]},
+                  -9px 9px 0 ${COLORS[4]},
+                  -12px 12px 0 ${COLORS[3]},
+                  -15px 15px 0 ${COLORS[2]},
+                  -18px 18px 0 ${COLORS[2]},
+                  -21px 21px 0 ${COLORS[1]},
+                  -24px 24px 0 ${COLORS[0]};
+  }
+`;
+
+const neonRainbow = keyframes`
+  from {
+    text-shadow:  0 0 10px ${COLORS[0]},
+                  0 0 20px ${COLORS[1]},
+                  0 0 30px ${COLORS[1]},
+                  0 0 40px  ${COLORS[2]},
+                  0 0 70px  ${COLORS[3]},
+                  0 0 80px  ${COLORS[4]},
+                  0 0 100px ${COLORS[4]},
+                  0 0 150px ${COLORS[5]};
+  }
+  to {
+    text-shadow:  0 0 5px ${COLORS[5]},
+                  0 0 10px ${COLORS[4]},
+                  0 0 15px ${COLORS[4]},
+                  0 0 20px ${COLORS[3]},
+                  0 0 35px ${COLORS[2]},
+                  0 0 40px ${COLORS[2]},
+                  0 0 50px ${COLORS[1]},
+                  0 0 75px ${COLORS[0]};
+  }
+`;
+
 const neon = keyframes`
   from {
     text-shadow:  0 0 10px #FFDD1B,
@@ -133,7 +179,8 @@ const neon = keyframes`
                   0 0 40px #FFDD1B,
                   0 0 50px #FFDD1B,
                   0 0 75px #FFDD1B;
-  }`;
+  }
+`;
 
 const RainbowText = styled.span`
   color: ${COLORS[0]};
@@ -248,14 +295,40 @@ const SparkleButton = Button.extend`
 
 const SparkleText = styled.p`
   color: #ffffff;
-  transition: all 0.5s;
-  animation: ${neon} 1.5s ease-in-out infinite alternate;
+  animation: ${neon} 1s ease-in-out infinite alternate;
 
   &:hover {
     color: lemonChiffon;
   }
 `;
 
+const RainbowSparkleButton = Button.extend`
+  font-family: "Bungee";
+  cursor: url("sparkles.png") 32 32, pointer;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 36px;
+  padding: 0px;
+
+  @media (min-width: 420px) {
+    font-size: 40px;
+    line-height: 45px;
+  }
+
+  @media (min-width: 769px) {
+    font-size: 56px;
+    line-height: 72px;
+  }
+`;
+
+const RainbowSparkleText = styled.p`
+  color: white;
+  animation: ${neonRainbow} 1s ease-in-out infinite alternate;
+
+  &:hover {
+    animation: ${neonRainbowHover} 1s ease-in-out infinite alternate;
+  }
+`;
 const Line = styled.div`
   width: 60%;
   min-height: 2px;
@@ -318,6 +391,9 @@ class App extends Component {
             <SparkleButton>
               <SparkleText>Sparkle</SparkleText>
             </SparkleButton>
+            <RainbowSparkleButton>
+              <RainbowSparkleText>Rainbow Sparkle</RainbowSparkleText>
+            </RainbowSparkleButton>
           </section>
         </Main>
         <Footer>
