@@ -1,7 +1,15 @@
 import React, { Component } from "react";
-import styled from "styled-components";
-import { rainbowShadow } from "./style-utils";
+import styled, { keyframes } from "styled-components";
 import umbrella from "./assets/animated-pixel-umbrella.gif";
+
+const COLORS = [
+  "#9400d3",
+  "#0000ff",
+  "#00ff00",
+  "#ffff00",
+  "#ff7f00",
+  "#ff0000"
+];
 
 const Container = styled.div`
   display: flex;
@@ -71,22 +79,17 @@ const InstructionsContainer = styled.div`
 
 const Button = styled.button`
   font-family: "Press Start 2P", Helvetica, Arial, Verdana, sans-serif;
-  color: turquoise;
-  animation: animated-rainbow-shadow 1s infinite;
-
-  &:hover {
-    color: darkturquoise;
-  }
-`;
-
-const RainbowButton = Button.extend`
   display: block;
-  font-size: 28px;
   text-decoration: none;
   font-weight: 300;
   background: none;
   margin: 15px auto;
   border: none;
+`;
+
+const RainbowButton = Button.extend`
+  cursor: url("rainbow.png") 32 32, pointer;
+  font-size: 28px;
   line-height: 36px;
 
   + button {
@@ -104,6 +107,21 @@ const RainbowButton = Button.extend`
   }
 `;
 
+const rainbowAnimation = keyframes`
+  16.7%{color: ${COLORS[0]};}
+	33.4%{color: ${COLORS[1]};}
+	50.1%{color: ${COLORS[2]};}
+	66.8%{color: ${COLORS[3]};}
+	83.5%{color: ${COLORS[4]};}
+	100%{color: ${COLORS[5]};}
+`;
+
+const RainbowText = styled.span`
+  font-family: "Press Start 2P";
+  color: ${COLORS[0]};
+  animation: ${rainbowAnimation} 5s infinite;
+`;
+
 class App extends Component {
   render() {
     return (
@@ -116,11 +134,11 @@ class App extends Component {
           <InstructionsContainer>
             <p>Click on a program below</p>
             <p>& it will light my clothing!</p>
-            <div class="line" />
+            <div className="line" />
           </InstructionsContainer>
           <section>
             <RainbowButton>
-              <span>RAINBOWS</span>
+              <RainbowText>RAINBOWS</RainbowText>
             </RainbowButton>
           </section>
         </Main>
