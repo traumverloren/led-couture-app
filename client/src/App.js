@@ -113,6 +113,28 @@ const rainbowAnimation = keyframes`
 	100%{color: ${COLORS[5]};}
 `;
 
+const neon = keyframes`
+  from {
+    text-shadow:  0 0 10px #FFDD1B,
+                  0 0 20px #FFDD1B,
+                  0 0 30px #FFDD1B,
+                  0 0 40px  rgb(214, 154, 24),
+                  0 0 70px  rgb(214, 154, 24),
+                  0 0 80px  rgb(214, 154, 24),
+                  0 0 100px rgb(214, 154, 24),
+                  0 0 150px rgb(214, 154, 24);
+  }
+  to {
+    text-shadow:  0 0 5px rgb(214, 154, 24),
+                  0 0 10px rgb(214, 154, 24),
+                  0 0 15px rgb(214, 154, 24),
+                  0 0 20px #FFDD1B,
+                  0 0 35px #FFDD1B,
+                  0 0 40px #FFDD1B,
+                  0 0 50px #FFDD1B,
+                  0 0 75px #FFDD1B;
+  }`;
+
 const RainbowText = styled.span`
   color: ${COLORS[0]};
   animation: ${rainbowAnimation} 4s infinite;
@@ -149,7 +171,7 @@ const SnakeButton = Button.extend`
 const RainButton = Button.extend`
   font-family: "Nosifer", Helvetica, Arial, Verdana, sans-serif;
   color: #0000ff;
-  cursor: url("raincloud.gif") 32 32, pointer;
+  cursor: url("raincloud.png") 32 32, pointer;
   font-size: 32px;
   line-height: 40px;
   padding: 0px;
@@ -196,6 +218,41 @@ const RainbowRainButton = Button.extend`
   @media (min-width: 769px) {
     font-size: 50px;
     line-height: 68px;
+  }
+`;
+
+const SparkleButton = Button.extend`
+  font-family: "Bungee";
+  text-shadow: 0 0 10px gold;
+  cursor: url("sparkle.png") 32 32, pointer;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  padding: 0px;
+
+  &:hover {
+    color: rgb(214, 154, 24);
+    text-shadow: 0 0 20px gold;
+  }
+
+  @media (min-width: 420px) {
+    font-size: 40px;
+    line-height: 45px;
+  }
+
+  @media (min-width: 769px) {
+    font-size: 56px;
+    line-height: 72px;
+  }
+`;
+
+const SparkleText = styled.p`
+  color: #ffffff;
+  transition: all 0.5s;
+  animation: ${neon} 1.5s ease-in-out infinite alternate;
+
+  &:hover {
+    color: lemonChiffon;
   }
 `;
 
@@ -258,6 +315,9 @@ class App extends Component {
             <RainbowRainButton>
               <span>Rainbow Rain</span>
             </RainbowRainButton>
+            <SparkleButton>
+              <SparkleText>Sparkle</SparkleText>
+            </SparkleButton>
           </section>
         </Main>
         <Footer>
