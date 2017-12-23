@@ -78,22 +78,19 @@ const InstructionsContainer = styled.div`
 `;
 
 const Button = styled.button`
-  font-family: "Press Start 2P", Helvetica, Arial, Verdana, sans-serif;
   display: block;
   text-decoration: none;
   font-weight: 300;
   background: none;
-  margin: 15px auto;
+  margin: 10px auto;
   border: none;
 `;
 
 const RainbowButton = Button.extend`
+  font-family: "Press Start 2P", Helvetica, Arial, Verdana, sans-serif;
   cursor: url("rainbow.png") 32 32, pointer;
   font-size: 28px;
   line-height: 36px;
-
-  + button {
-    padding: 15px;
   }
 
   @media (min-width: 420px) {
@@ -117,9 +114,36 @@ const rainbowAnimation = keyframes`
 `;
 
 const RainbowText = styled.span`
-  font-family: "Press Start 2P";
   color: ${COLORS[0]};
-  animation: ${rainbowAnimation} 5s infinite;
+  animation: ${rainbowAnimation} 4s infinite;
+
+  &:hover {
+    animation: ${rainbowAnimation} 0.4s infinite;
+  }
+`;
+
+const SnakeButton = Button.extend`
+  font-family: "Monoton", Helvetica, Arial, Verdana, sans-serif;
+  color: #019119;
+  cursor: url("snake.png") 32 32, pointer;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  padding: 0px;
+
+  &:hover {
+    text-shadow: 10px 10px 0 red;
+  }
+
+  @media (min-width: 420px) {
+    font-size: 40px;
+    line-height: 45px;
+  }
+
+  @media (min-width: 769px) {
+    font-size: 56px;
+    line-height: 72px;
+  }
 `;
 
 const Line = styled.div`
@@ -127,7 +151,7 @@ const Line = styled.div`
   min-height: 2px;
   border-bottom: 2px dashed #000000;
   height: 2px;
-  margin: 0px auto;
+  margin: 5px auto;
 
   @media (min-width: 769px) {
     margin: 30px auto;
@@ -172,6 +196,9 @@ class App extends Component {
             <RainbowButton>
               <RainbowText>RAINBOWS</RainbowText>
             </RainbowButton>
+            <SnakeButton>
+              <span>SNAKE</span>
+            </SnakeButton>
           </section>
         </Main>
         <Footer>
