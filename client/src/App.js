@@ -60,7 +60,7 @@ const Image = styled.img`
 
 const InstructionsContainer = styled.div`
   margin: 0;
-  padding: 20px 0;
+  padding: 10px 0;
   font-size: 12px;
   font-family: "Press Start 2P", Helvetica, Arial, Verdana, sans-serif;
   text-align: center;
@@ -122,6 +122,37 @@ const RainbowText = styled.span`
   animation: ${rainbowAnimation} 5s infinite;
 `;
 
+const Line = styled.div`
+  width: 60%;
+  min-height: 2px;
+  border-bottom: 2px dashed #000000;
+  height: 2px;
+  margin: 0px auto;
+
+  @media (min-width: 769px) {
+    margin: 30px auto;
+  }
+`;
+
+const Footer = styled.footer`
+  padding: 50px 0 10px;
+  text-align: center;
+`;
+
+const Text = styled.p`
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin: 0;
+
+  @media (min-width: 420px) {
+    font-size: 18px;
+  }
+
+  @media (min-width: 769px) {
+    font-size: 22px;
+  }
+`;
+
 class App extends Component {
   render() {
     return (
@@ -136,12 +167,18 @@ class App extends Component {
             <p>& it will light my clothing!</p>
             <div className="line" />
           </InstructionsContainer>
+          <Line />
           <section>
             <RainbowButton>
               <RainbowText>RAINBOWS</RainbowText>
             </RainbowButton>
           </section>
         </Main>
+        <Footer>
+          <Text>
+            Made & Worn with 💖 by <a href="https://stephanie.lol">Stephanie</a>
+          </Text>
+        </Footer>
       </Container>
     );
   }
