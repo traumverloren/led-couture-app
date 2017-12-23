@@ -335,7 +335,7 @@ const RainbowRainButton = Button.extend`
 `;
 
 const SparkleButton = Button.extend`
-  font-family: "Bungee";
+  font-family: "Bungee Inline";
   text-shadow: 0 0 10px gold;
   cursor: url("sparkle.png") 32 32, pointer;
   font-size: 32px;
@@ -369,7 +369,7 @@ const SparkleText = styled.p`
 `;
 
 const RainbowSparkleButton = Button.extend`
-  font-family: "Bungee";
+  font-family: "Bungee Inline";
   cursor: url("sparkles.png") 32 32, pointer;
   font-size: 26px;
   font-weight: 600;
