@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled, { keyframes } from "styled-components";
 import umbrella from "./assets/animated-pixel-umbrella.gif";
-
+import client from "./mqtt-client";
 const COLORS = [
   "#9400d3",
   "#0000ff",
@@ -65,7 +65,7 @@ const SlidingVertical = styled.div`
     opacity: 0;
     position: absolute;
     padding-right: 5px;
-    overflow: hidden;
+    overflow: visible;
     color: ${COLORS[0]};
     animation: ${topToBottom} 12.5s linear infinite 0s;
   }
@@ -427,6 +427,32 @@ const Text = styled.p`
 `;
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    client.on("connect", () => {
+      client.on("error", error => {
+        console.log("ERROR: ", error);
+      });
+
+      client.on("offline", () => {
+        console.log("offline");
+      });
+
+      client.on("disconnect", () => {
+        console.log("disconnect");
+      });
+
+      client.on("reconnect", () => {
+        console.log("reconnect");
+      });
+    });
+  }
+
+  sendEvent = program => {
+    client.publish("lights", program);
+  };
+
   render() {
     return (
       <Container>
@@ -451,22 +477,24 @@ class App extends Component {
           </InstructionsContainer>
           <Line />
           <section>
-            <RainbowButton>
+            <RainbowButton onClick={() => this.sendEvent("rainbow")}>
               <RainbowText>RAINBOWS</RainbowText>
             </RainbowButton>
-            <SnakeButton>
+            <SnakeButton onClick={() => this.sendEvent("snake")}>
               <span>SNAKE</span>
             </SnakeButton>
-            <RainButton>
+            <RainButton onClick={() => this.sendEvent("rain")}>
               <span>Rain</span>
             </RainButton>
-            <RainbowRainButton>
+            <RainbowRainButton onClick={() => this.sendEvent("rainbowRain")}>
               <span>Rainbow Rain</span>
             </RainbowRainButton>
-            <SparkleButton>
+            <SparkleButton onClick={() => this.sendEvent("sparkle")}>
               <SparkleText>Sparkle</SparkleText>
             </SparkleButton>
-            <RainbowSparkleButton>
+            <RainbowSparkleButton
+              onClick={() => this.sendEvent("rainbowSparkle")}
+            >
               <RainbowSparkleText>Rainbow Sparkle</RainbowSparkleText>
             </RainbowSparkleButton>
           </section>
