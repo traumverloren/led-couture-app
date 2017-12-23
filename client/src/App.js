@@ -146,6 +146,59 @@ const SnakeButton = Button.extend`
   }
 `;
 
+const RainButton = Button.extend`
+  font-family: "Nosifer", Helvetica, Arial, Verdana, sans-serif;
+  color: #0000ff;
+  cursor: url("raincloud.gif") 32 32, pointer;
+  font-size: 32px;
+  line-height: 40px;
+  padding: 0px;
+
+  &:hover {
+    color: lightSkyBlue;
+  }
+
+  @media (min-width: 420px) {
+    font-size: 40px;
+    line-height: 45px;
+  }
+
+  @media (min-width: 769px) {
+    font-size: 56px;
+    line-height: 72px;
+  }
+`;
+
+const RainbowRainButton = Button.extend`
+  font-family: "Nosifer", Helvetica, Arial, Verdana, sans-serif;
+  cursor: url("rainbowraincloud.png") 32 32, pointer;
+  font-size: 26px;
+  line-height: 40px;
+  padding: 0 0 15px;
+  color: darkblue;
+  text-shadow: 0 1px 0 #fb4236, 0 2px 0 #fb4236, 0 3px 0 #fb4236,
+    0 4px 0 #ff6b01, 0 5px 0 #ff6b01, 0 6px 0 #ff6b01, 0 7px 0 #fdc741,
+    0 8px 0 #fdc741, 0 9px 0 #fdc741, 0 10px 0 #25ce7b, 0 11px 0 #25ce7b,
+    0 12px 0 #25ce7b, 0 13px 0 #01b3e3, 0 14px 0 #01b3e3, 0 15px 0 #01b3e3,
+    0 16px 0 #da38b5, 0 17px 0 #da38b5, 0 18px 0 #da38b5;
+  /* Pride Rainbow Text CSS found at TypographyCSS.com
+  - by kevinhauger.com */
+
+  &:hover {
+    color: pink;
+  }
+
+  @media (min-width: 420px) {
+    font-size: 36px;
+    line-height: 42px;
+  }
+
+  @media (min-width: 769px) {
+    font-size: 50px;
+    line-height: 68px;
+  }
+`;
+
 const Line = styled.div`
   width: 60%;
   min-height: 2px;
@@ -199,6 +252,12 @@ class App extends Component {
             <SnakeButton>
               <span>SNAKE</span>
             </SnakeButton>
+            <RainButton>
+              <span>Rain</span>
+            </RainButton>
+            <RainbowRainButton>
+              <span>Rainbow Rain</span>
+            </RainbowRainButton>
           </section>
         </Main>
         <Footer>
