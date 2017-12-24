@@ -371,7 +371,7 @@ const SparkleButton = Button.extend`
   font-size: 32px;
   font-weight: 600;
   line-height: 40px;
-  padding: 0px;
+  padding: 5px;
 
   &:hover {
     color: rgb(214, 154, 24);
@@ -401,7 +401,7 @@ const SparkleText = styled.p`
 const ConfettiButton = Button.extend`
   font-family: "Bungee Inline";
   cursor: url("sparkles.png") 32 32, pointer;
-  font-size: 26px;
+  font-size: 32px;
   font-weight: 600;
   line-height: 36px;
   padding: 0px;
