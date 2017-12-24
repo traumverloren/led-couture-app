@@ -181,15 +181,35 @@ const rainbowAnimation = keyframes`
 
 const neonRainbowHover = keyframes`
   from {
-    text-shadow:  0 0 0 ${COLORS[0]},
-                  0 3px 0 ${COLORS[1]},
-                  0 6px 0 ${COLORS[1]},
-                  0 9px 0 ${COLORS[2]},
-                  0 12px 0 ${COLORS[3]},
-                  0 15px 0 ${COLORS[4]},
-                  0 18px 0 ${COLORS[4]},
-                  0 21px 0 ${COLORS[5]};
+    text-shadow:  3px 3px 0 ${COLORS[0]},
+                  6px 6px 0 ${COLORS[1]},
+                  9px 9px 0 ${COLORS[1]},
+                  12px 12px 0 ${COLORS[2]},
+                  15px 15px 0 ${COLORS[3]},
+                  18px 18px 0 ${COLORS[4]},
+                  21px 21px 0 ${COLORS[4]},
+                  24px 24px 0 ${COLORS[5]};
   }
+  /* 25% {
+    text-shadow:  3px -3px 0 ${COLORS[5]},
+                  6px -6px 0 ${COLORS[4]},
+                  9px -9px 0 ${COLORS[4]},
+                  12px -12px 0 ${COLORS[3]},
+                  15px -15px 0 ${COLORS[2]},
+                  18px -18px 0 ${COLORS[2]},
+                  21px -21px 0 ${COLORS[1]},
+                  24px -24px 0 ${COLORS[0]}; */
+  }
+  /* 50% {
+    text-shadow:  -3px -3px 0 ${COLORS[5]},
+                  -6px -6px 0 ${COLORS[4]},
+                  -9px -9px 0 ${COLORS[4]},
+                  -12px -12px 0 ${COLORS[3]},
+                  -15px -15px 0 ${COLORS[2]},
+                  -18px -18px 0 ${COLORS[2]},
+                  -21px -21px 0 ${COLORS[1]},
+                  -24px -24px 0 ${COLORS[0]};
+  } */
   to {
     text-shadow:  -3px 3px 0 ${COLORS[5]},
                   -6px 6px 0 ${COLORS[4]},
@@ -200,28 +220,38 @@ const neonRainbowHover = keyframes`
                   -21px 21px 0 ${COLORS[1]},
                   -24px 24px 0 ${COLORS[0]};
   }
+  /* 100% {
+    text-shadow:  3px 3px 0 ${COLORS[0]},
+                  6px 6px 0 ${COLORS[1]},
+                  9px 9px 0 ${COLORS[1]},
+                  12px 12px 0 ${COLORS[2]},
+                  15px 15px 0 ${COLORS[3]},
+                  18px 18px 0 ${COLORS[4]},
+                  21px 21px 0 ${COLORS[4]},
+                  24px 24px 0 ${COLORS[5]};
+  } */
 `;
 
 const neonRainbow = keyframes`
   from {
-    text-shadow:  0 0 10px ${COLORS[0]},
-                  0 0 20px ${COLORS[1]},
-                  0 0 30px ${COLORS[1]},
-                  0 0 40px  ${COLORS[2]},
-                  0 0 70px  ${COLORS[3]},
-                  0 0 80px  ${COLORS[4]},
-                  0 0 100px ${COLORS[4]},
-                  0 0 150px ${COLORS[5]};
+    text-shadow:  0 0 0 ${COLORS[0]},
+                  0 3px 0 ${COLORS[1]},
+                  0 6px 0 ${COLORS[1]},
+                  0 9px 0 ${COLORS[2]},
+                  0 12px 0 ${COLORS[3]},
+                  0 15px 0 ${COLORS[4]},
+                  0 18px 0 ${COLORS[4]},
+                  0 21px 0 ${COLORS[5]};
   }
   to {
-    text-shadow:  0 0 5px ${COLORS[5]},
-                  0 0 10px ${COLORS[4]},
-                  0 0 15px ${COLORS[4]},
-                  0 0 20px ${COLORS[3]},
-                  0 0 35px ${COLORS[2]},
-                  0 0 40px ${COLORS[2]},
-                  0 0 50px ${COLORS[1]},
-                  0 0 75px ${COLORS[0]};
+    text-shadow:  0 3px 0 ${COLORS[5]},
+                  0 6px 0 ${COLORS[4]},
+                  0 9px 0 ${COLORS[4]},
+                  0 12px 0 ${COLORS[3]},
+                  0 15px 0 ${COLORS[2]},
+                  0 18px 0 ${COLORS[2]},
+                  0 21px 0 ${COLORS[1]},
+                  0 24px 0 ${COLORS[0]};
   }
 `;
 
@@ -368,7 +398,7 @@ const SparkleText = styled.p`
   }
 `;
 
-const RainbowSparkleButton = Button.extend`
+const ConfettiButton = Button.extend`
   font-family: "Bungee Inline";
   cursor: url("sparkles.png") 32 32, pointer;
   font-size: 26px;
@@ -387,8 +417,8 @@ const RainbowSparkleButton = Button.extend`
   }
 `;
 
-const RainbowSparkleText = styled.p`
-  color: white;
+const ConfettiText = styled.p`
+  color: fuchsia;
   animation: ${neonRainbow} 1s ease-in-out infinite alternate;
 
   &:hover {
@@ -492,11 +522,9 @@ class App extends Component {
             <SparkleButton onClick={() => this.sendEvent("sparkle")}>
               <SparkleText>Sparkle</SparkleText>
             </SparkleButton>
-            <RainbowSparkleButton
-              onClick={() => this.sendEvent("rainbowSparkle")}
-            >
-              <RainbowSparkleText>Rainbow Sparkle</RainbowSparkleText>
-            </RainbowSparkleButton>
+            <ConfettiButton onClick={() => this.sendEvent("rainbowSparkle")}>
+              <ConfettiText>Confetti</ConfettiText>
+            </ConfettiButton>
           </section>
         </Main>
         <Footer>
