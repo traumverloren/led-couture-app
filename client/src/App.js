@@ -298,6 +298,10 @@ const SnakeButton = Button.extend`
   line-height: 40px;
   padding: 0px;
 
+  span {
+    padding-bottom: 10px;
+  }
+
   &:hover {
     text-shadow: 10px 10px 0 red;
   }
@@ -392,7 +396,7 @@ const SparkleButton = Button.extend`
 `;
 
 const SparkleText = styled.p`
-  padding: 10px;
+  padding: 12px;
   color: #ffffff;
   animation: ${neon} 1s ease-in-out infinite alternate;
 
