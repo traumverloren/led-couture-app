@@ -150,6 +150,7 @@ const Button = styled.button`
   background: none;
   margin: 10px auto;
   border: none;
+  padding: 0;
 `;
 
 const RainbowButton = Button.extend`
@@ -235,50 +236,51 @@ const neonRainbowHover = keyframes`
 const neonRainbow = keyframes`
   from {
     text-shadow:  0 0 0 ${COLORS[0]},
-                  0 3px 0 ${COLORS[1]},
-                  0 6px 0 ${COLORS[1]},
-                  0 9px 0 ${COLORS[2]},
-                  0 12px 0 ${COLORS[3]},
-                  0 15px 0 ${COLORS[4]},
-                  0 18px 0 ${COLORS[4]},
-                  0 21px 0 ${COLORS[5]};
+                  0 0.1em 0 ${COLORS[1]},
+                  0 0.2em 0 ${COLORS[1]},
+                  0 0.3em 0 ${COLORS[2]},
+                  0 0.4em 0 ${COLORS[3]},
+                  0 0.5em 0 ${COLORS[4]},
+                  0 0.6em 0 ${COLORS[4]},
+                  0 0.7em 0 ${COLORS[5]};
   }
   to {
-    text-shadow:  0 3px 0 ${COLORS[5]},
-                  0 6px 0 ${COLORS[4]},
-                  0 9px 0 ${COLORS[4]},
-                  0 12px 0 ${COLORS[3]},
-                  0 15px 0 ${COLORS[2]},
-                  0 18px 0 ${COLORS[2]},
-                  0 21px 0 ${COLORS[1]},
-                  0 24px 0 ${COLORS[0]};
+    text-shadow:  0 0.1em 0 ${COLORS[5]},
+                  0 0.2em 0 ${COLORS[4]},
+                  0 0.3em 0 ${COLORS[4]},
+                  0 0.4em 0 ${COLORS[3]},
+                  0 0.5em 0 ${COLORS[2]},
+                  0 0.6em 0 ${COLORS[2]},
+                  0 0.7em 0 ${COLORS[1]},
+                  0 0.8em 0 ${COLORS[0]};
   }
 `;
 
 const neon = keyframes`
   from {
-    text-shadow:  0 0 10px #FFDD1B,
-                  0 0 20px #FFDD1B,
-                  0 0 30px #FFDD1B,
-                  0 0 40px  rgb(214, 154, 24),
-                  0 0 70px  rgb(214, 154, 24),
-                  0 0 80px  rgb(214, 154, 24),
-                  0 0 100px rgb(214, 154, 24),
-                  0 0 150px rgb(214, 154, 24);
+    text-shadow:  0 0 0px #FFDD1B,
+                  0 0 2px #FFDD1B,
+                  0 0 4px #FFDD1B,
+                  0 0 6px rgb(214, 154, 24),
+                  0 0 8px rgb(214, 154, 24),
+                  0 0 13px rgb(214, 154, 24),
+                  0 0 17px rgb(214, 154, 24),
+                  0 0 20px rgb(214, 154, 24);
   }
   to {
-    text-shadow:  0 0 5px rgb(214, 154, 24),
-                  0 0 10px rgb(214, 154, 24),
-                  0 0 15px rgb(214, 154, 24),
-                  0 0 20px #FFDD1B,
-                  0 0 35px #FFDD1B,
-                  0 0 40px #FFDD1B,
-                  0 0 50px #FFDD1B,
-                  0 0 75px #FFDD1B;
+    text-shadow:  0 0 1px rgb(214, 154, 24),
+                  0 0 2px rgb(214, 154, 24),
+                  0 0 4px rgb(214, 154, 24),
+                  0 0 6px #FFDD1B,
+                  0 0 7px #FFDD1B,
+                  0 0 10px #FFDD1B,
+                  0 0 12px #FFDD1B,
+                  0 0 14px #FFDD1B;
   }
 `;
 
 const RainbowText = styled.span`
+  padding-bottom: 10px;
   color: ${COLORS[0]};
   animation: ${rainbowAnimation} 4s infinite;
 
@@ -371,7 +373,7 @@ const SparkleButton = Button.extend`
   font-size: 32px;
   font-weight: 600;
   line-height: 40px;
-  padding: 5px;
+  margin: 0px auto;
 
   &:hover {
     color: rgb(214, 154, 24);
@@ -390,6 +392,7 @@ const SparkleButton = Button.extend`
 `;
 
 const SparkleText = styled.p`
+  padding: 10px;
   color: #ffffff;
   animation: ${neon} 1s ease-in-out infinite alternate;
 
@@ -399,25 +402,23 @@ const SparkleText = styled.p`
 `;
 
 const ConfettiButton = Button.extend`
+  margin: 0px auto;
   font-family: "Bungee Inline";
   cursor: url("sparkles.png") 32 32, pointer;
   font-size: 32px;
   font-weight: 600;
-  line-height: 36px;
-  padding: 0px;
 
   @media (min-width: 420px) {
     font-size: 40px;
-    line-height: 45px;
   }
 
   @media (min-width: 769px) {
     font-size: 56px;
-    line-height: 72px;
   }
 `;
 
 const ConfettiText = styled.p`
+  padding: 0 25px 30px 25px;
   color: fuchsia;
   animation: ${neonRainbow} 1s ease-in-out infinite alternate;
 
@@ -438,7 +439,7 @@ const Line = styled.div`
 `;
 
 const Footer = styled.footer`
-  padding: 50px 0 10px;
+  padding: 20px 0 10px;
   text-align: center;
 `;
 
