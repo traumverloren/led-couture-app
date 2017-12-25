@@ -466,6 +466,15 @@ class App extends Component {
     super(props);
 
     client.on("connect", () => {
+      client.subscribe("lights");
+
+      client.publish("lights", "Hello mqtt");
+
+      client.on("message", function(topic, message) {
+        // message is Buffer
+        console.log(topic, message.toString());
+      });
+
       client.on("error", error => {
         console.log("ERROR: ", error);
       });
