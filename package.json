@@ -8,7 +8,7 @@
     "log": "pm2 logs index",
     "monitor": "pm2 monitor",
     "show": "pm2 show index",
-    "start": "pm2 start index.js",
+    "start": "PORT=8080 pm2 start index.js",
     "restart": "pm2 restart all",
     "install": "cd client && npm install && npm run build && cd .."
   },
