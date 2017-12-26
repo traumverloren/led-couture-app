@@ -1,6 +1,6 @@
 import mqtt from "mqtt";
 
-const client = mqtt.connect("wss://flashylights.nl", {
+const client = mqtt.connect("mqtts://flashylights.nl:1884", {
   clientId: "react-app"
 });
 

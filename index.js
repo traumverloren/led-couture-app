@@ -9,12 +9,14 @@ console.log("STARTING SERVER 🌈 🦄 ✨");
 
 const pubsubsettings = {};
 const moscaSettings = {
+  port: 1883,
+  http: {
+    port: 1884
+  },
   backend: pubsubsettings //pubsubsettings is the object we created above
 };
 
 const mqtt = new mosca.Server(moscaSettings); //here we start mosca
-
-mqtt.attachHttpServer(server);
 
 mqtt.on("ready", setup); //on init it fires up setup()
 
@@ -60,7 +62,7 @@ mqtt.on("clientDisconnected", function(client) {
 app.use(express.static(path.resolve(__dirname, "client", "build")));
 
 // Always return the main index.html, so react-router render the route in the client
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 
