@@ -1,61 +1,48 @@
 const express = require("express");
-const mosca = require("mosca");
 const app = express();
 const path = require("path");
 const server = require("http").Server(app);
-let port = process.env.PORT || 8080;
+const aedes = require("aedes")();
+const mqtt = require("net").createServer(aedes.handle);
+const httpServer = require("http").createServer();
+const ws = require("websocket-stream");
+const mqttPort = 1883;
+const wsPort = 8888;
+const appPort = 8080;
 
-console.log("STARTING SERVER 🌈 🦄 ✨");
+mqtt.listen(mqttPort, function() {
+  console.log("server listening on port", mqttPort);
+});
 
-const pubsubsettings = {};
-const moscaSettings = {
-  port: 1883,
-  http: {
-    port: 1884
+ws.createServer(
+  {
+    server: httpServer
   },
-  backend: pubsubsettings //pubsubsettings is the object we created above
-};
+  aedes.handle
+);
 
-const mqtt = new mosca.Server(moscaSettings); //here we start mosca
-
-mqtt.on("ready", setup); //on init it fires up setup()
-
-const message = {
-  topic: "lights",
-  payload: "CONNECTED TO SERVER YAY"
-};
-
-// fired when the mqtt server is ready
-function setup() {
-  console.log("Mosca server is up and running");
-}
-
-mqtt.on("error", function(err) {
-  console.log(err);
+httpServer.listen(wsPort, function() {
+  console.log("websocket server listening on port", wsPort);
 });
 
-mqtt.on("clientConnected", function(client) {
-  console.log("Client Connected", client.id);
+aedes.on("clientError", function(client, err) {
+  console.log("client error", client.id, err.message, err.stack);
 });
 
-mqtt.on("published", function(packet, client) {
-  console.log("Published", packet);
+aedes.on("publish", function(packet, client) {
+  if (client) {
+    console.log("message from client", client.id);
+  }
 });
 
-mqtt.on("subscribed", function(topic, client) {
-  console.log("Subscribed", client.packet);
+aedes.on("subscribe", function(subscriptions, client) {
+  if (client) {
+    console.log("subscribe from client", subscriptions, client.id);
+  }
 });
 
-mqtt.on("unsubscribed", function(topic, client) {
-  console.log("unsubscribed", topic);
-});
-
-mqtt.on("clientDisconnecting", function(client) {
-  console.log("clientDisconnecting", client.id);
-});
-
-mqtt.on("clientDisconnected", function(client) {
-  console.log("Client Disconnected", client.id);
+aedes.on("client", function(client) {
+  console.log("new client", client.id);
 });
 
 // Serve static assets
@@ -66,6 +53,6 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 
-server.listen(port, () => {
-  console.log("Express app listening on port:", port);
+server.listen(appPort, () => {
+  console.log("Express app listening on port:", appPort);
 });
