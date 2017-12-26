@@ -5,11 +5,8 @@ const path = require("path");
 const server = require("http").Server(app);
 let port = process.env.PORT || 8080;
 
-require("dotenv").config();
-
 console.log("STARTING SERVER 🌈 🦄 ✨");
 
-console.log(process.env.REACT_APP_MQTT_IP);
 const pubsubsettings = {};
 const moscaSettings = {
   backend: pubsubsettings //pubsubsettings is the object we created above

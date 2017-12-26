@@ -1,6 +1,6 @@
 import mqtt from "mqtt";
 
-const client = mqtt.connect(`ws://${process.env.REACT_APP_MQTT_IP}`, {
+const client = mqtt.connect("wss://flashylights.nl", {
   clientId: "react-app"
 });
 
