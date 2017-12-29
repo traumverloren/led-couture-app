@@ -155,7 +155,7 @@ const Button = styled.button`
 
 const RainbowButton = Button.extend`
   font-family: "Press Start 2P", Helvetica, Arial, Verdana, sans-serif;
-  cursor: url("rainbow.png") 32 32, pointer;
+  cursor: url(${process.env.PUBLIC_URL}/rainbow.png) 32 32, pointer;
   font-size: 28px;
   line-height: 36px;
   }
@@ -292,7 +292,7 @@ const RainbowText = styled.span`
 const SnakeButton = Button.extend`
   font-family: "Monoton", Helvetica, Arial, Verdana, sans-serif;
   color: #019119;
-  cursor: url("snake.png") 32 32, pointer;
+  cursor: url(${process.env.PUBLIC_URL}/snake.png) 32 32, pointer;
   font-size: 32px;
   font-weight: 600;
   line-height: 40px;
@@ -320,7 +320,7 @@ const SnakeButton = Button.extend`
 const RainButton = Button.extend`
   font-family: "Nosifer", Helvetica, Arial, Verdana, sans-serif;
   color: #0000ff;
-  cursor: url("raincloud.png") 32 32, pointer;
+  cursor: url(${process.env.PUBLIC_URL}/raincloud.png) 32 32, pointer;
   font-size: 32px;
   line-height: 40px;
   padding: 0px;
@@ -342,7 +342,7 @@ const RainButton = Button.extend`
 
 const RainbowRainButton = Button.extend`
   font-family: "Nosifer", Helvetica, Arial, Verdana, sans-serif;
-  cursor: url("rainbowraincloud.png") 32 32, pointer;
+  cursor: url(${process.env.PUBLIC_URL}/rainbowraincloud.png) 32 32, pointer;
   font-size: 26px;
   line-height: 40px;
   padding: 0 0 15px;
@@ -373,7 +373,7 @@ const RainbowRainButton = Button.extend`
 const SparkleButton = Button.extend`
   font-family: "Bungee Inline";
   text-shadow: 0 0 10px gold;
-  cursor: url("sparkle.png") 32 32, pointer;
+  cursor: url(${process.env.PUBLIC_URL}/sparkle.png) 32 32, pointer;
   font-size: 32px;
   font-weight: 600;
   line-height: 40px;
@@ -408,7 +408,7 @@ const SparkleText = styled.p`
 const ConfettiButton = Button.extend`
   margin: 0px auto;
   font-family: "Bungee Inline";
-  cursor: url("sparkles.png") 32 32, pointer;
+  cursor: url(${process.env.PUBLIC_URL}/sparkles.png) 32 32, pointer;
   font-size: 32px;
   font-weight: 600;
 
