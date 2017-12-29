@@ -3,10 +3,9 @@ const app = express();
 const path = require("path");
 const aedes = require("aedes")();
 const mqtt = require("net").createServer(aedes.handle);
-const httpServer = require("http").createServer();
+const httpServer = require("http").createServer(app);
 const ws = require("websocket-stream");
 const mqttPort = 1883;
-const wsPort = 8888;
 const appPort = 8080;
 
 mqtt.listen(mqttPort, function() {
@@ -20,8 +19,8 @@ ws.createServer(
   aedes.handle
 );
 
-httpServer.listen(wsPort, function() {
-  console.log("websocket server listening on port", wsPort);
+httpServer.listen(appPort, function() {
+  console.log("websocket server listening on port", appPort);
 });
 
 aedes.on("clientError", function(client, err) {
@@ -50,8 +49,4 @@ app.use(express.static(path.resolve(__dirname, "client", "build")));
 // Always return the main index.html, so react-router render the route in the client
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-});
-
-app.listen(appPort, () => {
-  console.log("Express app listening on port:", appPort);
 });
