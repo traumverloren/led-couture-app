@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const server = require("http").Server(app);
 const aedes = require("aedes")();
 const mqtt = require("net").createServer(aedes.handle);
 const httpServer = require("http").createServer();
@@ -53,6 +52,6 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 
-server.listen(appPort, () => {
+app.listen(appPort, () => {
   console.log("Express app listening on port:", appPort);
 });
