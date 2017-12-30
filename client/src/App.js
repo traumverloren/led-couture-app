@@ -466,29 +466,29 @@ class App extends Component {
     super(props);
 
     client.on("connect", () => {
-      client.subscribe("lights");
+      // client.subscribe("lights");
 
       client.publish("lights", "Hello mqtt");
 
       client.on("message", function(topic, message) {
         // message is Buffer
-        console.log(topic, message.toString());
+        // console.log(topic, message.toString());
       });
 
       client.on("error", error => {
-        console.log("ERROR: ", error);
+        // console.log("ERROR: ", error);
       });
 
       client.on("offline", () => {
-        console.log("offline");
+        // console.log("offline");
       });
 
       client.on("disconnect", () => {
-        console.log("disconnect");
+        // console.log("disconnect");
       });
 
       client.on("reconnect", () => {
-        console.log("reconnect");
+        // console.log("reconnect");
       });
     });
   }
