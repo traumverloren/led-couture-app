@@ -2,8 +2,6 @@
 
 This is the main client-side React app and node.js/express server for an interactive wearables/fashion/art project.
 
----
-
 ![umbrella, necklace, skirt in action](public/led-couture-outfit.gif)
 
 ---
