@@ -4,7 +4,7 @@ This is the main client-side React app and node.js/express server for an interac
 
 ---
 
-![gif of umbrella, necklace, skirt in action](https://media.giphy.com/media/xT1R9Bl3WsCITbUVxe/giphy.gif)
+![umbrella, necklace, skirt in action](public/led-couture-outfit.gif)
 
 ---
 
