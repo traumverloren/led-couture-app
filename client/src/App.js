@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import styled, { keyframes } from "styled-components";
+import ColorPicker from "./components/ColorPicker";
 import umbrella from "./assets/animated-pixel-umbrella.gif";
 import client from "./mqtt-client";
+
 const COLORS = [
   "#9400d3",
   "#0000ff",
@@ -124,6 +126,13 @@ const Image = styled.img`
   margin: 0 auto;
 `;
 
+const ColorSelection = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  align-items: center;
+`;
+
 const InstructionsContainer = styled.div`
   margin: 0;
   padding: 10px 0;
@@ -191,26 +200,6 @@ const neonRainbowHover = keyframes`
                   21px 21px 0 ${COLORS[4]},
                   24px 24px 0 ${COLORS[5]};
   }
-  /* 25% {
-    text-shadow:  3px -3px 0 ${COLORS[5]},
-                  6px -6px 0 ${COLORS[4]},
-                  9px -9px 0 ${COLORS[4]},
-                  12px -12px 0 ${COLORS[3]},
-                  15px -15px 0 ${COLORS[2]},
-                  18px -18px 0 ${COLORS[2]},
-                  21px -21px 0 ${COLORS[1]},
-                  24px -24px 0 ${COLORS[0]}; */
-  }
-  /* 50% {
-    text-shadow:  -3px -3px 0 ${COLORS[5]},
-                  -6px -6px 0 ${COLORS[4]},
-                  -9px -9px 0 ${COLORS[4]},
-                  -12px -12px 0 ${COLORS[3]},
-                  -15px -15px 0 ${COLORS[2]},
-                  -18px -18px 0 ${COLORS[2]},
-                  -21px -21px 0 ${COLORS[1]},
-                  -24px -24px 0 ${COLORS[0]};
-  } */
   to {
     text-shadow:  -3px 3px 0 ${COLORS[5]},
                   -6px 6px 0 ${COLORS[4]},
@@ -221,16 +210,6 @@ const neonRainbowHover = keyframes`
                   -21px 21px 0 ${COLORS[1]},
                   -24px 24px 0 ${COLORS[0]};
   }
-  /* 100% {
-    text-shadow:  3px 3px 0 ${COLORS[0]},
-                  6px 6px 0 ${COLORS[1]},
-                  9px 9px 0 ${COLORS[1]},
-                  12px 12px 0 ${COLORS[2]},
-                  15px 15px 0 ${COLORS[3]},
-                  18px 18px 0 ${COLORS[4]},
-                  21px 21px 0 ${COLORS[4]},
-                  24px 24px 0 ${COLORS[5]};
-  } */
 `;
 
 const neonRainbow = keyframes`
@@ -464,37 +443,36 @@ const Text = styled.p`
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = { colorSelected: "#ff0000" };
 
     client.on("connect", () => {
-      // client.subscribe("lights");
-
-      client.publish("lights", "Hello mqtt");
-
-      client.on("message", function(topic, message) {
-        // message is Buffer
-        // console.log(topic, message.toString());
-      });
+      client.on("message", function(topic, message) {});
 
       client.on("error", error => {
         // console.log("ERROR: ", error);
       });
 
       client.on("offline", () => {
-        // console.log("offline");
+        console.log("offline");
       });
 
       client.on("disconnect", () => {
-        // console.log("disconnect");
+        console.log("disconnect");
       });
 
       client.on("reconnect", () => {
-        // console.log("reconnect");
+        console.log("reconnect");
       });
     });
   }
 
   sendEvent = program => {
     client.publish("lights", program);
+  };
+
+  handleClick = color => {
+    console.log(color);
+    this.setState({ colorSelected: color });
   };
 
   render() {
@@ -515,10 +493,16 @@ class App extends Component {
             <Image src={umbrella} />
           </ImageContainer>
           <InstructionsContainer>
-            <p>Click on a program below</p>
-            <p>& it will light my clothing!</p>
-            <div className="line" />
+            <p>Pick a color, select a program, </p>
+            <p>& light my clothing!</p>
           </InstructionsContainer>
+          <Line />
+          <ColorSelection>
+            <ColorPicker
+              colorSelected={this.state.colorSelected}
+              handleClick={this.handleClick}
+            />
+          </ColorSelection>
           <Line />
           <section>
             <RainbowButton onClick={() => this.sendEvent("rainbow")}>
