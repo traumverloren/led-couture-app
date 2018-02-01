@@ -443,25 +443,25 @@ const Text = styled.p`
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { colorSelected: "#ff0000" };
+    this.state = { colorSelected: "rgb(255, 0, 0)" };
 
     client.on("connect", () => {
       client.on("message", function(topic, message) {});
 
       client.on("error", error => {
-        // console.log("ERROR: ", error);
+        console.log("ERROR: ", error);
       });
 
       client.on("offline", () => {
-        console.log("offline");
+        // console.log("offline");
       });
 
       client.on("disconnect", () => {
-        console.log("disconnect");
+        // console.log("disconnect");
       });
 
       client.on("reconnect", () => {
-        console.log("reconnect");
+        // console.log("reconnect");
       });
     });
   }

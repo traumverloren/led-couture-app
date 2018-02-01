@@ -12,15 +12,15 @@ const ColorGroup = styled.div`
 
 const ColorPicker = ({ colorSelected, handleClick }) => {
   const colors = [
-    "#ff0000",
-    "#F78DA7",
-    "#0693E3",
-    "#8ED1FC",
-    "#00D084",
-    "#7BDCB5",
-    "#FCB900",
-    "#FF6900",
-    "#ffffff",
+    "rgb(255, 0, 0)",
+    "rgb(247, 141, 167)",
+    "rgb(6, 147, 227)",
+    "rgb(142, 209, 252)",
+    "rgb(0, 208, 132)",
+    "rgb(123, 220, 181)",
+    "rgb(252, 185, 0)",
+    "rgb(255, 105, 0)",
+    "rgb(255, 255, 255)",
     "rainbow"
   ];
   const colorList = colors.map((color, index) => (
