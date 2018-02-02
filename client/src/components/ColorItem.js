@@ -6,7 +6,7 @@ const Swatch = styled.div`
   box-sizing: border-box;
   display: inline;
   background: ${props =>
-    props.color === "rainbow" ? `url(${rainbow})` : props.color};
+    props.color === "rainbow" ? `url(${rainbow})` : `rgb(${props.color})`};
   background-size: cover;
   width: 30px;
   height: 30px;
