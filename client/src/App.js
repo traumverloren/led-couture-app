@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import styled, { keyframes } from "styled-components";
+import ColorPicker from "./components/ColorPicker";
 import umbrella from "./assets/animated-pixel-umbrella.gif";
 import client from "./mqtt-client";
+
 const COLORS = [
   "#9400d3",
   "#0000ff",
@@ -124,9 +126,16 @@ const Image = styled.img`
   margin: 0 auto;
 `;
 
+const ColorSelection = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  align-items: center;
+`;
+
 const InstructionsContainer = styled.div`
   margin: 0;
-  padding: 10px 0;
+  padding: 5px 0;
   font-size: 12px;
   font-family: "Press Start 2P", Helvetica, Arial, Verdana, sans-serif;
   text-align: center;
@@ -153,7 +162,7 @@ const Button = styled.button`
   padding: 0;
 `;
 
-const RainbowButton = Button.extend`
+const FadeButton = Button.extend`
   font-family: "Press Start 2P", Helvetica, Arial, Verdana, sans-serif;
   cursor: url(${process.env.PUBLIC_URL}/rainbow.png) 32 32, pointer;
   font-size: 28px;
@@ -180,82 +189,6 @@ const rainbowAnimation = keyframes`
 	100%{color: ${COLORS[5]};}
 `;
 
-const neonRainbowHover = keyframes`
-  from {
-    text-shadow:  3px 3px 0 ${COLORS[0]},
-                  6px 6px 0 ${COLORS[1]},
-                  9px 9px 0 ${COLORS[1]},
-                  12px 12px 0 ${COLORS[2]},
-                  15px 15px 0 ${COLORS[3]},
-                  18px 18px 0 ${COLORS[4]},
-                  21px 21px 0 ${COLORS[4]},
-                  24px 24px 0 ${COLORS[5]};
-  }
-  /* 25% {
-    text-shadow:  3px -3px 0 ${COLORS[5]},
-                  6px -6px 0 ${COLORS[4]},
-                  9px -9px 0 ${COLORS[4]},
-                  12px -12px 0 ${COLORS[3]},
-                  15px -15px 0 ${COLORS[2]},
-                  18px -18px 0 ${COLORS[2]},
-                  21px -21px 0 ${COLORS[1]},
-                  24px -24px 0 ${COLORS[0]}; */
-  }
-  /* 50% {
-    text-shadow:  -3px -3px 0 ${COLORS[5]},
-                  -6px -6px 0 ${COLORS[4]},
-                  -9px -9px 0 ${COLORS[4]},
-                  -12px -12px 0 ${COLORS[3]},
-                  -15px -15px 0 ${COLORS[2]},
-                  -18px -18px 0 ${COLORS[2]},
-                  -21px -21px 0 ${COLORS[1]},
-                  -24px -24px 0 ${COLORS[0]};
-  } */
-  to {
-    text-shadow:  -3px 3px 0 ${COLORS[5]},
-                  -6px 6px 0 ${COLORS[4]},
-                  -9px 9px 0 ${COLORS[4]},
-                  -12px 12px 0 ${COLORS[3]},
-                  -15px 15px 0 ${COLORS[2]},
-                  -18px 18px 0 ${COLORS[2]},
-                  -21px 21px 0 ${COLORS[1]},
-                  -24px 24px 0 ${COLORS[0]};
-  }
-  /* 100% {
-    text-shadow:  3px 3px 0 ${COLORS[0]},
-                  6px 6px 0 ${COLORS[1]},
-                  9px 9px 0 ${COLORS[1]},
-                  12px 12px 0 ${COLORS[2]},
-                  15px 15px 0 ${COLORS[3]},
-                  18px 18px 0 ${COLORS[4]},
-                  21px 21px 0 ${COLORS[4]},
-                  24px 24px 0 ${COLORS[5]};
-  } */
-`;
-
-const neonRainbow = keyframes`
-  from {
-    text-shadow:  0 0 0 ${COLORS[0]},
-                  0 0.1em 0 ${COLORS[1]},
-                  0 0.2em 0 ${COLORS[1]},
-                  0 0.3em 0 ${COLORS[2]},
-                  0 0.4em 0 ${COLORS[3]},
-                  0 0.5em 0 ${COLORS[4]},
-                  0 0.6em 0 ${COLORS[4]},
-                  0 0.7em 0 ${COLORS[5]};
-  }
-  to {
-    text-shadow:  0 0.1em 0 ${COLORS[5]},
-                  0 0.2em 0 ${COLORS[4]},
-                  0 0.3em 0 ${COLORS[4]},
-                  0 0.4em 0 ${COLORS[3]},
-                  0 0.5em 0 ${COLORS[2]},
-                  0 0.6em 0 ${COLORS[2]},
-                  0 0.7em 0 ${COLORS[1]},
-                  0 0.8em 0 ${COLORS[0]};
-  }
-`;
-
 const neon = keyframes`
   from {
     text-shadow:  0 0 0px #FFDD1B,
@@ -279,7 +212,7 @@ const neon = keyframes`
   }
 `;
 
-const RainbowText = styled.span`
+const FadeText = styled.span`
   padding-bottom: 10px;
   color: ${COLORS[0]};
   animation: ${rainbowAnimation} 4s infinite;
@@ -319,44 +252,13 @@ const SnakeButton = Button.extend`
 
 const RainButton = Button.extend`
   font-family: "Nosifer", Helvetica, Arial, Verdana, sans-serif;
-  color: #0000ff;
-  cursor: url(${process.env.PUBLIC_URL}/raincloud.png) 32 32, pointer;
+  cursor: url(${process.env.PUBLIC_URL}/rainbowraincloud.png) 32 32, pointer;
   font-size: 32px;
   line-height: 40px;
-  padding: 0px;
+  color: cornflowerblue;
 
   &:hover {
-    color: lightSkyBlue;
-  }
-
-  @media (min-width: 420px) {
-    font-size: 40px;
-    line-height: 45px;
-  }
-
-  @media (min-width: 769px) {
-    font-size: 56px;
-    line-height: 72px;
-  }
-`;
-
-const RainbowRainButton = Button.extend`
-  font-family: "Nosifer", Helvetica, Arial, Verdana, sans-serif;
-  cursor: url(${process.env.PUBLIC_URL}/rainbowraincloud.png) 32 32, pointer;
-  font-size: 26px;
-  line-height: 40px;
-  padding: 0 0 15px;
-  color: darkblue;
-  text-shadow: 0 1px 0 #fb4236, 0 2px 0 #fb4236, 0 3px 0 #fb4236,
-    0 4px 0 #ff6b01, 0 5px 0 #ff6b01, 0 6px 0 #ff6b01, 0 7px 0 #fdc741,
-    0 8px 0 #fdc741, 0 9px 0 #fdc741, 0 10px 0 #25ce7b, 0 11px 0 #25ce7b,
-    0 12px 0 #25ce7b, 0 13px 0 #01b3e3, 0 14px 0 #01b3e3, 0 15px 0 #01b3e3,
-    0 16px 0 #da38b5, 0 17px 0 #da38b5, 0 18px 0 #da38b5;
-  /* Pride Rainbow Text CSS found at TypographyCSS.com
-  - by kevinhauger.com */
-
-  &:hover {
-    color: pink;
+    color: blue;
   }
 
   @media (min-width: 420px) {
@@ -396,7 +298,6 @@ const SparkleButton = Button.extend`
 `;
 
 const SparkleText = styled.p`
-  padding: 12px;
   color: #ffffff;
   animation: ${neon} 1s ease-in-out infinite alternate;
 
@@ -405,40 +306,16 @@ const SparkleText = styled.p`
   }
 `;
 
-const ConfettiButton = Button.extend`
-  margin: 0px auto;
-  font-family: "Bungee Inline";
-  cursor: url(${process.env.PUBLIC_URL}/sparkles.png) 32 32, pointer;
-  font-size: 32px;
-  font-weight: 600;
-
-  @media (min-width: 420px) {
-    font-size: 40px;
-  }
-
-  @media (min-width: 769px) {
-    font-size: 56px;
-  }
-`;
-
-const ConfettiText = styled.p`
-  padding: 0 25px 30px 25px;
-  color: fuchsia;
-  animation: ${neonRainbow} 1s ease-in-out infinite alternate;
-
-  &:hover {
-    animation: ${neonRainbowHover} 1s ease-in-out infinite alternate;
-  }
-`;
 const Line = styled.div`
-  width: 60%;
+  width: 95%;
   min-height: 2px;
   border-bottom: 2px dashed #000000;
   height: 2px;
   margin: 5px auto;
 
-  @media (min-width: 769px) {
-    margin: 30px auto;
+  @media (min-width: 768px) {
+    width: 60%;
+    margin: 15px auto;
   }
 `;
 
@@ -464,19 +341,13 @@ const Text = styled.p`
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = { colorSelected: "255, 0, 0" };
 
     client.on("connect", () => {
-      // client.subscribe("lights");
-
-      client.publish("lights", "Hello mqtt");
-
-      client.on("message", function(topic, message) {
-        // message is Buffer
-        // console.log(topic, message.toString());
-      });
+      client.on("message", function(topic, message) {});
 
       client.on("error", error => {
-        // console.log("ERROR: ", error);
+        console.log("ERROR: ", error);
       });
 
       client.on("offline", () => {
@@ -494,7 +365,11 @@ class App extends Component {
   }
 
   sendEvent = program => {
-    client.publish("lights", program);
+    client.publish("lights", `${program}, ${this.state.colorSelected}`);
+  };
+
+  handleClick = color => {
+    this.setState({ colorSelected: color });
   };
 
   render() {
@@ -515,35 +390,40 @@ class App extends Component {
             <Image src={umbrella} />
           </ImageContainer>
           <InstructionsContainer>
-            <p>Click on a program below</p>
-            <p>& it will light my clothing!</p>
-            <div className="line" />
+            <p>Pick a color,</p>
+            <p>select a program,</p>
+            <p>& light my clothing!</p>
           </InstructionsContainer>
           <Line />
+          <ColorSelection>
+            <ColorPicker
+              colorSelected={this.state.colorSelected}
+              handleClick={this.handleClick}
+            />
+          </ColorSelection>
+          <Line />
           <section>
-            <RainbowButton onClick={() => this.sendEvent("rainbow")}>
-              <RainbowText>RAINBOWS</RainbowText>
-            </RainbowButton>
+            <FadeButton onClick={() => this.sendEvent("fade")}>
+              <FadeText>FADE</FadeText>
+            </FadeButton>
             <SnakeButton onClick={() => this.sendEvent("snake")}>
               <span>SNAKE</span>
             </SnakeButton>
             <RainButton onClick={() => this.sendEvent("rain")}>
               <span>Rain</span>
             </RainButton>
-            <RainbowRainButton onClick={() => this.sendEvent("rainbowRain")}>
-              <span>Rainbow Rain</span>
-            </RainbowRainButton>
             <SparkleButton onClick={() => this.sendEvent("sparkle")}>
               <SparkleText>Sparkle</SparkleText>
             </SparkleButton>
-            <ConfettiButton onClick={() => this.sendEvent("rainbowSparkle")}>
-              <ConfettiText>Confetti</ConfettiText>
-            </ConfettiButton>
           </section>
         </Main>
         <Footer>
           <Text>
-            Made & Worn with 💖 by <a href="https://stephanie.lol">Stephanie</a>
+            Made & Worn with{" "}
+            <span role="img" aria-label="heart emoji">
+              💖
+            </span>{" "}
+            by <a href="https://stephanie.lol">Stephanie</a>
           </Text>
         </Footer>
       </Container>
