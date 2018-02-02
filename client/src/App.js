@@ -13,6 +13,29 @@ const COLORS = [
   "#ff0000"
 ];
 
+const slideDown = keyframes`
+  0%, 100% { transform: translateY(-50px); }
+  10%, 90% { transform: translateY(0px); }
+`;
+
+const Alert = styled.div`
+   {
+    background-color: MediumSeaGreen;
+    font-family: "Pacifico", monospace;
+    font-size: 24px;
+    position: absolute;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    line-height: 2;
+    overflow: hidden;
+    transform: translateY(-50px);
+    animation: ${slideDown} 2.5s 1s 1 ease forwards;
+  }
+`;
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -341,7 +364,7 @@ const Text = styled.p`
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { colorSelected: "255, 0, 0" };
+    this.state = { colorSelected: "255, 0, 0", isSubmitted: false };
 
     client.on("connect", () => {
       client.on("message", function(topic, message) {});
@@ -366,6 +389,12 @@ class App extends Component {
 
   sendEvent = program => {
     client.publish("lights", `${program}, ${this.state.colorSelected}`);
+    this.setState({ isSubmitted: true });
+    window.setTimeout(() => {
+      this.setState({
+        isSubmitted: false
+      });
+    }, 3500);
   };
 
   handleClick = color => {
@@ -373,60 +402,68 @@ class App extends Component {
   };
 
   render() {
+    let alert;
+    if (this.state.isSubmitted) {
+      alert = <Alert role="alert">✨ Color program sent! ✨</Alert>;
+    }
+
     return (
-      <Container>
-        <Main>
-          <Heading>
-            Light My
-            <SlidingVertical>
-              <span>Clothes</span>
-              <span>Skirt</span>
-              <span>Necklace</span>
-              <span>Stuff</span>
-              <span>Umbrella</span>
-            </SlidingVertical>
-          </Heading>
-          <ImageContainer>
-            <Image src={umbrella} />
-          </ImageContainer>
-          <InstructionsContainer>
-            <p>Pick a color,</p>
-            <p>select a program,</p>
-            <p>& light my clothing!</p>
-          </InstructionsContainer>
-          <Line />
-          <ColorSelection>
-            <ColorPicker
-              colorSelected={this.state.colorSelected}
-              handleClick={this.handleClick}
-            />
-          </ColorSelection>
-          <Line />
-          <section>
-            <FadeButton onClick={() => this.sendEvent("fade")}>
-              <FadeText>FADE</FadeText>
-            </FadeButton>
-            <SnakeButton onClick={() => this.sendEvent("snake")}>
-              <span>SNAKE</span>
-            </SnakeButton>
-            <RainButton onClick={() => this.sendEvent("rain")}>
-              <span>Rain</span>
-            </RainButton>
-            <SparkleButton onClick={() => this.sendEvent("sparkle")}>
-              <SparkleText>Sparkle</SparkleText>
-            </SparkleButton>
-          </section>
-        </Main>
-        <Footer>
-          <Text>
-            Made & Worn with{" "}
-            <span role="img" aria-label="heart emoji">
-              💖
-            </span>{" "}
-            by <a href="https://stephanie.lol">Stephanie</a>
-          </Text>
-        </Footer>
-      </Container>
+      <div>
+        {alert}
+        <Container>
+          <Main>
+            <Heading>
+              Light My
+              <SlidingVertical>
+                <span>Clothes</span>
+                <span>Skirt</span>
+                <span>Necklace</span>
+                <span>Stuff</span>
+                <span>Umbrella</span>
+              </SlidingVertical>
+            </Heading>
+            <ImageContainer>
+              <Image src={umbrella} />
+            </ImageContainer>
+            <InstructionsContainer>
+              <p>Pick a color,</p>
+              <p>select a program,</p>
+              <p>& light my clothing!</p>
+            </InstructionsContainer>
+            <Line />
+            <ColorSelection>
+              <ColorPicker
+                colorSelected={this.state.colorSelected}
+                handleClick={this.handleClick}
+              />
+            </ColorSelection>
+            <Line />
+            <section>
+              <FadeButton onClick={() => this.sendEvent("fade")}>
+                <FadeText>FADE</FadeText>
+              </FadeButton>
+              <SnakeButton onClick={() => this.sendEvent("snake")}>
+                <span>SNAKE</span>
+              </SnakeButton>
+              <RainButton onClick={() => this.sendEvent("rain")}>
+                <span>Rain</span>
+              </RainButton>
+              <SparkleButton onClick={() => this.sendEvent("sparkle")}>
+                <SparkleText>Sparkle</SparkleText>
+              </SparkleButton>
+            </section>
+          </Main>
+          <Footer>
+            <Text>
+              Made & Worn with{" "}
+              <span role="img" aria-label="heart emoji">
+                💖
+              </span>{" "}
+              by <a href="https://stephanie.lol">Stephanie</a>
+            </Text>
+          </Footer>
+        </Container>
+      </div>
     );
   }
 }
