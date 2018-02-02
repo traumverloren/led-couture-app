@@ -23,7 +23,7 @@ const Alert = styled.div`
     background-color: MediumSeaGreen;
     font-family: "Pacifico", monospace;
     font-size: 24px;
-    position: absolute;
+    position: fixed;
     z-index: 101;
     top: 0;
     left: 0;
@@ -144,7 +144,7 @@ const ImageContainer = styled.div`
 `;
 
 const Image = styled.img`
-  width: 40%;
+  width: 30%;
   display: block;
   margin: 0 auto;
 `;
