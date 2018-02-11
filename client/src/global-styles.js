@@ -1,7 +1,7 @@
 import { injectGlobal } from "styled-components";
 
 injectGlobal`
-  @import url("https://fonts.googleapis.com/css?family=Bungee+Inline|Monoton|Pacifico|Press+Start+2P|Nosifer");
+  @import url("https://fonts.googleapis.com/css?family=Ewert|Bungee+Inline|Monoton|Pacifico|Press+Start+2P|Nosifer");
 
   body {
     font-family: 'Pacifico';

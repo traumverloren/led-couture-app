@@ -297,7 +297,7 @@ const RainButton = Button.extend`
 
 const SparkleButton = Button.extend`
   font-family: "Bungee Inline";
-  text-shadow: 0 0 10px gold;
+  text-shadow: 0 0 5px gold;
   cursor: url(${process.env.PUBLIC_URL}/sparkle.png) 32 32, pointer;
   font-size: 32px;
   font-weight: 600;
@@ -306,7 +306,7 @@ const SparkleButton = Button.extend`
 
   &:hover {
     color: rgb(214, 154, 24);
-    text-shadow: 0 0 20px gold;
+    text-shadow: 0 0 10px gold;
   }
 
   @media (min-width: 420px) {
@@ -326,6 +326,37 @@ const SparkleText = styled.p`
 
   &:hover {
     color: lemonChiffon;
+  }
+`;
+
+const CarouselButton = styled.div`
+  font-family: "Ewert";
+  cursor: url(${process.env.PUBLIC_URL}/carousel.gif) 32 32, pointer;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 40px;
+  margin: 0px auto;
+
+  &:hover {
+    color: rgb(214, 154, 24);
+  }
+
+  @media (min-width: 420px) {
+    font-size: 40px;
+    line-height: 45px;
+  }
+
+  @media (min-width: 769px) {
+    font-size: 56px;
+    line-height: 72px;
+  }
+`;
+
+const CarouselText = styled.p`
+  color: HotPink;
+
+  &:hover {
+    color: Magenta;
   }
 `;
 
@@ -451,6 +482,9 @@ class App extends Component {
               <SparkleButton onClick={() => this.sendEvent("sparkle")}>
                 <SparkleText>Sparkle</SparkleText>
               </SparkleButton>
+              <CarouselButton onClick={() => this.sendEvent("carousel")}>
+                <CarouselText>Carousel</CarouselText>
+              </CarouselButton>
             </section>
           </Main>
           <Footer>
