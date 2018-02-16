@@ -302,7 +302,7 @@ const SparkleButton = Button.extend`
   font-size: 32px;
   font-weight: 600;
   line-height: 40px;
-  margin: 0px auto;
+  margin: 0px auto 10px;
 
   &:hover {
     color: rgb(214, 154, 24);
