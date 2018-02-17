@@ -1,5 +1,5 @@
 {
-  "name": "umbrella-couture-app",
+  "name": "led-couture-app",
   "version": "1.0.0",
   "description": "client + server for controlling leds in umbrella, necklace, and skirt using MQTT",
   "main": "index.js",
@@ -17,7 +17,6 @@
   "license": "ISC",
   "dependencies": {
     "aedes": "^0.32.0",
-    "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "pm2": "^2.9.1",
     "websocket-stream": "^5.1.1"

@@ -9,7 +9,7 @@ const mqttPort = 1883;
 const appPort = 8080;
 
 mqtt.listen(mqttPort, function() {
-  console.log("server listening on port", mqttPort);
+  console.log("mqtt server listening on port", mqttPort);
 });
 
 ws.createServer(
@@ -20,7 +20,7 @@ ws.createServer(
 );
 
 httpServer.listen(appPort, function() {
-  console.log("websocket server listening on port", appPort);
+  console.log("server listening on port", appPort);
 });
 
 aedes.on("clientError", function(client, err) {
