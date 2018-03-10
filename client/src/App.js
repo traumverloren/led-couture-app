@@ -329,7 +329,7 @@ const SparkleText = styled.p`
   }
 `;
 
-const CarouselButton = styled.div`
+const CarouselButton = styled.button`
   font-family: "Ewert";
   cursor: url(${process.env.PUBLIC_URL}/carousel.gif) 32 32, pointer;
   font-size: 36px;
